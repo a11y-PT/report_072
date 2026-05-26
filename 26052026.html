@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório Entidade do Tesouro e Finanças</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .skip-link { position: absolute; top: -40px; left: 0; background: #000; color: white; padding: 8px; z-index: 100; transition: top 0.3s ease; }
+    .skip-link:focus { top: 0; }
+    .visually-hidden-focusable:not(:focus):not(:focus-within) { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+    body { 
+      background-color: #ffffff; 
+      padding-top: 2rem; 
+      padding-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container { 
+      max-width: 900px;
+      width: 100%;
+      background-color: transparent; 
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .report-footer {
+      width: 100%;
+      align-self: stretch;
+      background-color: #ffffff;
+      color: #4a5568;
+      text-align: center;
+      padding: 1.25rem 1rem;
+      font-size: 0.8rem;
+      border-top: 1px solid #e0e0e0;
+      margin-top: auto;
+    }
+    .report-footer p { margin: 0.2rem 0; }
+    h1 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+    .status-ok { color: #ffffff; background-color: #0E8A16; padding: 0.25rem 0.5rem; border-radius: 50px; font-weight: 500; display: inline-block; }
+    .status-nok { color: #ffffff; background-color: #B60205; padding: 0.25rem 0.5rem; border-radius: 50px; font-weight: 500; display: inline-block; }
+    .status-melhoria { color: #856404; background-color: #fff3cd; padding: 0.25rem 0.5rem; border-radius: 50px; font-weight: 500; display: inline-block; }
+    .status-na { color: #000; background-color: #C2E0C6; padding: 0.25rem 0.5rem; border-radius: 50px; font-weight: 500; display: inline-block; }
+    .requirement-title { margin-top: 2rem; }
+    .requirement-title h4, .requirement-title h3 { color: #000; }
+    .mb-4 ul li a { color: #1e3a8a; text-decoration: none; }
+    .mb-4 ul li a:hover { color: #1e40af; text-decoration: underline; }
+    summary.index-summary { display: list-item; font-weight: 700; font-size: 1.25rem !important; color: #000; cursor: pointer; }
+    summary.index-summary:focus { outline: 3px solid #333399; outline-offset: 2px; }
+    .evidence-list { list-style-type: disc; padding-left: 1.5rem; margin: 1rem 0; }
+    .evidence-item { margin: 0.5rem 0; padding: 0.5rem 0.5rem 0.5rem 1.5rem; border-radius: 4px; background-color: #f6f6f6; color: #000; list-style: none; margin-left: -1.5rem; }
+    .evidence-item p { margin: 1.5rem 0 1rem 0; }
+    .evidence-labels { font-size: 0.85em; display: inline-flex; flex-wrap: wrap; gap: 0.25rem; }
+    .label-tag { padding: 0.125rem 0.375rem; border-radius: 1rem; font-size: 0.75rem; font-weight: 500; color: white; display: inline-block; margin-right: 0.25rem; }
+    .label-checklist { background-color: #5319E7; }
+    .label-auto { background-color: #5319E7; }
+    .label-declaracao { background-color: #5319E7; }
+    .label-outras { background-color: #5319E7; }
+    .label-melhoria { background-color: #FBCA04; color: #000; }
+    .label-na { background-color: #C2E0C6; color: #000; }
+    .label-ok { background-color: #0E8A16; }
+    .label-nok { background-color: #B60205; }
+    .label-requisito { background-color: #0052CC; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .report-section { border-bottom: 3px solid #000000; padding-bottom: 2rem; margin-bottom: 2rem; }
+    .report-section:last-of-type { border-bottom: none; }
+    .checklist-section { border-bottom: 3px solid #000000; padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+    .avaliacao-manual-section { padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+    .checklist-section:last-of-type { border-bottom: none; }
+    .issue-link { color: #1e3a8a; text-decoration: none; }
+    .issue-link:hover { text-decoration: underline; color: #1e40af; }
+    table.table caption { caption-side: top; text-align: left; padding-bottom: 0.5rem; font-weight: 600; color: #000; }
+  </style>
+</head>
+<body>
+  <a href="#conteudo-principal" class="skip-link visually-hidden-focusable">Saltar para o conteúdo principal</a>
+  <div class="container mt-4" id="conteudo-principal">
+    <header class="mb-4">
+        <h1>Relatório Avaliação de Candidatura<br><em style="font-size:70%">Entidade do Tesouro e Finanças</em></h1>
+    </header>
+
+    <section class="mb-4">
+      <ul>
+        <li>Avaliação feita por: ARTE. I.P. - Núcleo de Experiência e Usabilidade</li>
+        <li>Data de criação: 26/05/2026</li>
+        <li>Última atualização: 26/05/2026</li>
+        <li>URL: <a href="https://www.etf.gov.pt" target="_blank" rel="noopener noreferrer">https://www.etf.gov.pt</a></li>
+        <li>Propriedade: Entidade do Tesouro e Finanças</li>
+        <li>Candidatura: Prata</li>
+        <li>Progresso (% de requisitos auditados): 100%</li>
+      </ul>
+    </section>
+
+    <nav class="mb-4 report-section" aria-label="Índice">
+      <details open>
+        <summary class="index-summary">Índice</summary>
+        <ul>
+          <li><a href="#introducao">Introdução</a></li>
+          
+          <li><a href="#avaliacao-automatica">Avaliação automática</a></li>
+          
+          <li><a href="#avaliacao-manual">Avaliação manual</a>
+            <ul class="indent-list">
+              
+              <li><a href="#checklist-10-aspetos">Checklist 10 aspetos</a>
+                <ul class="indent-list">
+                  <li><a href="#req-chk10-r-1.2">Requisito 1.2 - É possível selecionar as opções e as subopções do menu quer com rato quer com teclado</a></li><li><a href="#req-chk10-r-1.3">Requisito 1.3 - As imagens-link, caso existam no menu, devem ter o correspondente equivalente alternativo em texto</a></li><li><a href="#req-chk10-r-2.1">Requisito 2.1 - Existe um título h1 marcado na página</a></li><li><a href="#req-chk10-r-2.2">Requisito 2.2 - Existe uma marcação hierarquizada de títulos e subtítulos na página (h1...h6)</a></li><li><a href="#req-chk10-r-3.1">Requisito 3.1 - As células que constituem os cabeçalhos da tabela estão marcadas com o elemento th</a></li><li><a href="#req-chk10-r-3.2">Requisito 3.2 - A legenda da tabela está marcada com o elemento caption</a></li><li><a href="#req-chk10-r-4.1">Requisito 4.1 - Ao clicar com o rato na etiqueta, o cursor surge no respetivo campo de edição</a></li><li><a href="#req-chk10-r-4.2">Requisito 4.2 - É possível identificar os campos de preenchimento obrigatório quando se usa apenas um leitor de ecrã</a></li><li><a href="#req-chk10-r-4.3">Requisito 4.3 - É possível localizar e ler as mensagens de erro usando apenas um leitor de ecrã</a></li><li><a href="#req-chk10-r-5.1">Requisito 5.1 - A imagem ou gráfico tem um equivalente alternativo em texto curto e correto</a></li><li><a href="#req-chk10-r-5.2">Requisito 5.2 - O gráfico é acompanhado de uma descrição longa</a></li><li><a href="#req-chk10-r-5.3">Requisito 5.3 - As imagens-link têm um equivalente alternativo correto</a></li><li><a href="#req-chk10-r-7.1">Requisito 7.1 - Deve ser possível ativar os botões de controlo do leitor quer com o rato quer com o teclado</a></li><li><a href="#req-chk10-r-7.2">Requisito 7.2 - O vídeo ou o áudio deve conter preferencialmente legendas fechadas sincronizadas. Caso não seja possível, no mínimo, deve disponibilizar-se uma transcrição textual</a></li><li><a href="#req-chk10-r-8.3">Requisito 8.3 - Quando se retira a CSS, deve ser possível reconhecer a semântica dos diversos elementos</a></li><li><a href="#req-chk10-r-8.5">Requisito 8.5 - A maquetização da página é feita sem recorrer ao elemento table</a></li><li><a href="#req-chk10-r-9.1">Requisito 9.1 - Quando a caixa de diálogo é aberta, o foco (cursor do Browser) move-se para um elemento dentro da caixa de diálogo</a></li><li><a href="#req-chk10-r-9.2">Requisito 9.2 - Quando uma caixa de diálogo está aberta, a navegação com teclado (Browser ou Tecnologia de apoio) tem de ficar circunscrita aos elementos que compõem a caixa de diálogo</a></li><li><a href="#req-chk10-r-9.3">Requisito 9.3 - A caixa de diálogo tem de ter um mecanismo que permita sair ou fechar a caixa, quer através de teclado quer através de um dispositivo apontador</a></li><li><a href="#req-chk10-r-9.4">Requisito 9.4 - Quando a caixa de diálogo fecha, o foco (cursor do Browser) deve voltar ao elemento interativo que a invocou</a></li><li><a href="#req-chk10-r-10.1">Requisito 10.1 - Nos ficheiros PDF é possível, no mínimo, extrair o conteúdo textual para formato TXT</a></li>
+                </ul>
+              </li>
+              
+              <li><a href="#checklist-conteudo">Checklist Conteúdo</a>
+                <ul class="indent-list">
+                  <li><a href="#req-conteudo-r-1.1">Requisito 1.1 - O sítio Web apresenta um resumo breve do seu propósito, visível sem se fazer scroll</a></li><li><a href="#req-conteudo-r-1.2">Requisito 1.2 - Os termos mais complexos têm uma definição agregada</a></li><li><a href="#req-conteudo-r-1.4">Requisito 1.4 - A informação sobre a entidade responsável pelo conteúdo está em todas as páginas</a></li><li><a href="#req-conteudo-r-2.3">Requisito 2.3 - Blocos e linhas de texto com largura não superior a 100 caracteres</a></li><li><a href="#req-conteudo-r-2.4">Requisito 2.4 - O espaçamento entre linhas não é inferior a 1.5x o tamanho da letra</a></li><li><a href="#req-conteudo-r-3.1">Requisito 3.1 - Nenhum nível de navegação tem mais de 9 opções</a></li><li><a href="#req-conteudo-r-3.2">Requisito 3.2 - A navegação principal está sempre visível e sempre no mesmo local</a></li><li><a href="#req-conteudo-r-3.3">Requisito 3.3 - As hiperligações de texto não devem ser diferenciadas apenas com base na cor</a></li><li><a href="#req-conteudo-r-4.1">Requisito 4.1 - Os documentos longos têm um índice no topo com hiperligações internas para o mesmo</a></li><li><a href="#req-conteudo-r-4.2">Requisito 4.2 - O layout do sítio Web é adaptável a plataformas móveis sem necessidade de efetuar varrimento horizontal</a></li><li><a href="#req-conteudo-r-5.2">Requisito 5.2 - Os elementos interativos têm uma dimensão mínima de 44px CSS (44 pontos) (vertical e horizontal)</a></li><li><a href="#req-conteudo-r-5.4">Requisito 5.4 - Elementos gráficos interativos têm de aparentar ser clicáveis</a></li>
+                </ul>
+              </li>
+              
+              <li><a href="#checklist-transacao">Checklist Transação</a>
+                <ul class="indent-list">
+                  <li><a href="#req-transacao-r-1.1">Requisito 1.1 - A sequência de tabulação entre campos segue a sequência de preenchimento</a></li><li><a href="#req-transacao-r-1.2">Requisito 1.2 - Os formulários com mais de 2 ecrãs de altura devem ser distribuídos por várias páginas</a></li><li><a href="#req-transacao-r-1.3">Requisito 1.3 - Os formulários com mais de uma página têm a sequência de passos ilustrada</a></li><li><a href="#req-transacao-r-2.2">Requisito 2.2 - É usada revelação progressiva em vez de campos inativos</a></li><li><a href="#req-transacao-r-2.3">Requisito 2.3 - As legendas dos campos são breves e claras</a></li><li><a href="#req-transacao-r-2.4">Requisito 2.4 - Campos obrigatórios devem ser claramente indicados como tal</a></li><li><a href="#req-transacao-r-3.1">Requisito 3.1 - Em ações longas, o sistema deve indicar o que está a acontecer</a></li><li><a href="#req-transacao-r-3.2">Requisito 3.2 - Deve ser confirmado o sucesso da transação/envio de informação</a></li><li><a href="#req-transacao-r-4.2">Requisito 4.2 - As ações destrutivas nunca devem ser permanentes; deve ser sempre possível desfazer a operação</a></li><li><a href="#req-transacao-r-4.3">Requisito 4.3 - As mensagens de erro são claramente identificadas junto aos campos de origem</a></li><li><a href="#req-transacao-r-4.4">Requisito 4.4 - As mensagens de erro devem mostrar os passos concretos para a resolução dos mesmos</a></li>
+                </ul>
+              </li>
+              <li><a href="#outras-violacoes">Outras violações</a></li>
+            </ul>
+          </li>
+          
+          <li><a href="#etiquetas">Significado das etiquetas utilizadas</a></li>
+        </ul>
+      </details>
+    </nav>
+
+    <section id="introducao" class="mb-5 report-section">
+      <h2>Introdução</h2>
+      <p>O website <a href="https://www.etf.gov.pt" target="_blank">https://www.etf.gov.pt</a> <strong><span class="status-nok"><span class="sr-only">etiqueta: </span>não passa</span></strong> nos requisitos mínimos do Selo de Usabilidade e Acessibilidade.</p>
+
+      <table class="table table-bordered">
+        <caption>Estado das avaliações efetuadas</caption>
+        <thead><tr><th>Tipo de avaliação</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td>Avaliação Automática</td><td><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></td></tr>
+          <tr><td>Avaliação Manual</td><td><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></td></tr>
+        </tbody>
+      </table>
+      <p>Das avaliações manuais efetuadas obtiveram-se os resultados que se sintetizam na tabela seguinte.</p>
+      <table class="table table-bordered">
+        <caption>Níveis de conformidade das avaliações manuais</caption>
+        <thead><tr><th>Checklist</th><th>Conformidade alcançada</th><th>Resultado</th></tr></thead>
+        <tbody>
+          <tr><td>10 aspetos</td><td>42.1% (8/19)</td><td><span class="status-nok"><span class="sr-only">etiqueta: </span>Não passa</span></td></tr>
+          <tr><td>Conteúdo</td><td>35.3% (6/17)</td><td><span class="status-nok"><span class="sr-only">etiqueta: </span>Não passa</span></td></tr>
+          <tr><td>Transação</td><td>60.0% (3/5)</td><td><span class="status-nok"><span class="sr-only">etiqueta: </span>Não passa</span></td></tr>
+        </tbody>
+      </table>
+      <p><strong>Nota:</strong> para passar os requisitos do Selo é necessário alcançar um nível de conformidade superior ou igual a 75% em cada uma das 3 checklists.</p></section>
+
+    <section id="avaliacao-automatica" class="mb-5 report-section">
+      <h2>Avaliação automática</h2>
+      <p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+      <p>Para a produção das evidências do presente capítulo, foram utilizadas ferramentas automatizadas de avaliação de requisitos de acessibilidade de acordo com a norma WCAG 2.1 'AA'. A amostra em análise pelas ferramentas é composta pela Homepage mais todas as páginas diretamente hiperligadas por ela, pertencentes ao domínio.</p>
+      
+      <p>Lista de evidências recolhidas:</p>
+      <ul class="evidence-list">
+            <li class="evidence-item">
+              <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/2" class="issue-link" target="_blank" rel="noopener noreferrer">issue #2</a> <strong>Avaliação Automática - Accessmonitor / Observatório (em avaliação)</strong></p>
+              <div class="evidence-labels"><span class="label-tag label-auto"><span class="sr-only">etiqueta: </span>av auto</span><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span></div>
+              <div class="issue-content"><p>Analisámos a amostra com o Accessmonitor, de acordo com o método Home+, tendo sido avaliadas, no total, <strong>49 páginas</strong>.</p>
+<p>Destas páginas, as <strong>2 páginas seguintes têm pontuação abaixo de 9:</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/home">https://www.etf.gov.pt/home</a> | 7.2	</li>
+<li><a href="https://www.etf.gov.pt/pesquisar">https://www.etf.gov.pt/pesquisar</a> | 8.0</li>
+</ul>
+<p>Para mais informação sobre os erros de acessibilidade que existem nessas páginas podem consultar o ficheiro .csv:<br><a href="https://github.com/user-attachments/files/28055411/20052026_etf.csv">20052026_etf.csv</a></p>
+<p>A correção desses erros fará aumentar a pontuação.</p>
+<p>Nota: A atualização ainda não foi efetuada no ambiente de produção nem no Observatório, pelo que estes valores ainda não se encontram públicos.</p>
+<img src="https://github.com/user-attachments/assets/41052056-fc3a-4bf9-a362-c95781f97338" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+</div>
+            </li>
+            <li class="evidence-item">
+              <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/1" class="issue-link" target="_blank" rel="noopener noreferrer">issue #1</a> <strong>Existem erros de acessibilidade</strong></p>
+              <div class="evidence-labels"><span class="label-tag label-auto"><span class="sr-only">etiqueta: </span>av auto</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span></div>
+              <div class="issue-content"><p>Efetuámos também uma análise com o validador Rocket Validator que indica a existência de 132 erros de Acessibilidade e que precisam ser corrigidos:</p>
+<img src="https://github.com/user-attachments/assets/32bc2ca3-e9c6-4251-b59a-138c34f40f43" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Análise automática feita pelo Rocket Validator indica 132 erros de acessibilidade em uma amostra de 52 páginas</em></p>
+<p>Para mais informações partilhamos o <a href="https://rocketvalidator.com/s/8f7ab5cf-739b-4e37-8948-7efae8f2743f">relatório da análise automática feita pelo Rocket Validator</a>.</p>
+</div>
+            </li></ul></section>
+
+    <section id="avaliacao-manual" class="mb-5 mt-5 avaliacao-manual-section">
+      <h2>Avaliação manual</h2>
+      <p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+      <p>A avaliação manual é feita por inspeção perícial dos diversos requisitos constantes da:</p>
+      <ul>
+        <li>checklist <strong>10 aspetos críticos de acessibilidade funcional</strong>;</li>
+        <li>checklist <strong>Conteúdo</strong> (se candidato a Selo Bronze);</li>
+        <li>checklist <strong>Transação</strong> (se candidato a Selo Prata).</li>
+      </ul>
+      <p>Sempre que os auditores localizam uma falha grave de um requisito de acessibilidade que, embora não faça parte do esquema de requisitos do Selo, se enquadre no âmbito das violações das WCAG 2.1 'AA' do W3C, tal referência é anotada em "Outras violações" do presente capítulo. Apesar destas violações não se apresentarem com carácter vinculativo no esquema de requisitos do Selo, recomenda-se que as mesmas sejam corrigidas.</p>
+      <div class="checklist-section">
+        <h3 id="checklist-10-aspetos">Checklist 10 aspetos</h3>
+        <p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+        
+      <p><strong>Nível de conformidade:</strong></p>
+        <ul>
+          <li><strong>Checklist 10 aspetos</strong>: 42.1% (8/19)
+            <ul>
+              <li>Requisitos avaliados: 27 (8 N/A excluídos, 19 aplicáveis)</li>
+              <li>Requisitos OK: 8</li>
+              <li>Requisitos NOK: 11</li>
+              <li>Requisitos N/A: 8</li>
+            </ul>
+          </li>
+        </ul>
+    
+        <h4 class="requirement-title" id="req-chk10-r-1.2">Requisito 1.2 - É possível selecionar as opções e as subopções do menu quer com rato quer com teclado</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/6" class="issue-link" target="_blank" rel="noopener noreferrer">issue #6</a> <strong>As hiperligações do menu não se diferenciam do texto envolvente</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.2</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>É possível selecionar as opções e as subopções do menu quer com rato quer com teclado.</p>
+<ul>
+<li><a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n12">Ver requisito 1.2 da lista 10 aspetos</a></li>
+</ul>
+</blockquote>
+<p><strong>Evidências:</strong><br>As hiperligações do menu devem ter uma representação visual diferente quando está com foco. Recomenda-se a utilização de outro elemento diferenciador, como sublinhado, negrito, ícone, fundo, delineado ou contorno. Esta abordagem permite uma identificação clara da opção em destaque, para facilitar a navegação e a compreensão do utilizador.</p>
+<p>O menu principal disponível no <a href="https://www.etf.gov.pt/home">website</a>, apresenta subopções que são diferenciadas apenas pela cor. Sendo assim, para pessoas com baixa visão pode não ser percetível qual opção do menu está com o foco, por exemplo com o hover na opção "Bonificações e Subsídios"  (Figura 1).</p>
+<img src="https://github.com/user-attachments/assets/fb36238a-e124-429b-8d22-f58d07194613" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Opções de segundo nível do menu, diferenciadas apenas pela cor</em></p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/">https://www.etf.gov.pt/</a> (Todo website)</li>
+</ul>
+<p><strong>Recomendações:</strong></p>
+<p>Recomendamos que a propriedade outline seja habilitada na folha de estilo, dessa forma o foco estará visível pelos navegadores ao navegar pelo teclado.</p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/5" class="issue-link" target="_blank" rel="noopener noreferrer">issue #5</a> <strong>Não é possível fechar o menu nas versões para dispositivos móveis</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.2</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>É possível selecionar as opções e as subopções do menu quer com rato quer com teclado.</p>
+<ul>
+<li><a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n12">Ver requisito 1.2 da lista 10 aspetos</a></li>
+</ul>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>Nas versões para dispositivos móveis, o menu de navegação ocupa todo o ecrã quando aberto, mas não existe qualquer opção visível ou acessível para o fechar. Esta limitação impede o utilizador de regressar ao conteúdo principal, bloqueando a navegação e comprometendo a usabilidade, sobretudo para utilizadores que dependem de tecnologias de apoio ou navegação por toque com precisão reduzida. (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/f428ac3d-9a0b-4cb1-a9e9-a3cabdb662a2" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Menu mobile sem opção de fechar</em>  </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/">https://www.etf.gov.pt/</a> (Todo website)</li>
+</ul>
+<p><strong>Recomendações:</strong><br>Implementar um botão de “Fechar” ou “X” com rótulo acessível  <code>aria-label="Fechar menu"</code>, para fechar o menu nas versões mobile e tablet, mantendo sempre uma alternativa de fecho explícita. Este ajuste assegura uma navegação contínua, previne bloqueios de interação e melhora significativamente a experiência para todos os utilizadores.</p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/4" class="issue-link" target="_blank" rel="noopener noreferrer">issue #4</a> <strong>Não é possível distinguir o menu principal e suas subopções não são claras com o leitor de ecrã</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.2</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>É possível selecionar as opções e as subopções do menu quer com rato quer com teclado.</p>
+<ul>
+<li><a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n12">Ver requisito 1.2 da lista 10 aspetos</a></li>
+</ul>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>O menu não é reconhecido pelo leitor de ecrã como menu principal, apenas como um link. Verificámos que na página incial os menus de navegação não estão a ser devidamente identificados. Esta situação faz com que não seja possível distingui-los através do leitor de ecrã. Sendo assim, não é informado ao utilizador o seu estado de interação, neste caso encontra-se recolhido e não é percetível que ali encontram-se subopções. (Figura 1 e 2)</p>
+<img src="https://github.com/user-attachments/assets/097680ce-2528-4fad-bd4e-817a53e99f6e" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Menu sem identificação para leitores de ecrã, anunciado incorretamente como "Navbar"</em></p>
+<img src="https://github.com/user-attachments/assets/e81dd08c-2d50-4abd-aa60-e86626e90180" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 – Subopções do Menu associado ao texto alternativo incorreto "Navbar"</em></p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/">https://www.etf.gov.pt/</a> (Todo website)</li>
+</ul>
+<p><strong>Recomendações:</strong><br>Remover o atributo <code>aria-label="Navbar"</code> aplicado ao elemento <code>&lt;nav&gt;</code>, uma vez que este rótulo não descreve a função de menu nem indica a existência de subníveis. O próprio elemento <code>&lt;nav&gt;</code> já fornece semântica suficiente de navegação. Reestruturar o menu principal, assegurando que: </p>
+<ul>
+<li>É reconhecido por tecnologias de apoio como um menu com opções e subopções; </li>
+<li>A hierarquia (nível 1, nível 2, etc.) é anunciada corretamente; </li>
+<li>O estado expandido/recolhido é expresso através de atributos como aria-expanded; </li>
+<li>As opções de primeiro nível podem estar acessíveis diretamente na página, conforme recomendado no Requisito 3.2 – Checklist de Conteúdos.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-1.3">Requisito 1.3 - As imagens-link, caso existam no menu, devem ter o correspondente equivalente alternativo em texto</h4>
+<div class="requirement-content">
+<p><span class="status-ok"><span class="sr-only">etiqueta: </span>OK</span> (no entanto contém 1 melhoria que se recomenda efetuar)</p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/7" class="issue-link" target="_blank" rel="noopener noreferrer">issue #7</a> <strong>As imagens-link do menu principal têm texto alternativo apropriado</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.3</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>As imagem-link, caso existam no menu, devem ter o correspondente equivalente alternativo em texto.</p>
+<ul>
+<li><a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n13">Ver requisito 1.3 da lista 10 aspetos</a></li>
+</ul>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>Na barra de navegação do menu principal foi identificada uma imagem-link com função de mudar para a versão em inglês do website. No entanto, essa opção "English" pode não ser claramente compreendida por utilizadores de língua portuguesa, que é o idioma principal do site.</p>
+<p>Adicionalmente, o texto alternativo da imagem-link <code>alt="english language"</code> não descreve de forma adequada a ação disponibilizada que é mudar de idioma. (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/acf37d2e-75f1-4e24-b010-75f1956f02b3" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Imagem link do menu com texto alternativo em inglês</em></p>
+<p>Esta implementação pode dificultar a correta interpretação por leitores de ecrã. Como resultado, utilizadores de tecnologias de apoio podem não perceber a finalidade do elemento.</p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/">https://www.etf.gov.pt/</a> (Todo website)</li>
+</ul>
+<p><strong>Recomendações:</strong><br>Deve ser corrigido o texto alternativo da imagem-link, dentro do alt="”, para evitar que o leitor de ecrã identifique corretamente. </p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-2.1">Requisito 2.1 - Existe um título h1 marcado na página</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/8" class="issue-link" target="_blank" rel="noopener noreferrer">issue #8</a> <strong>Há páginas sem &lt;h1&gt; atribuído</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.1</span><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>Existe um título <code>&lt;h1&gt;</code> marcado na página.</p>
+<ul>
+<li><a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n21">Ver requisito 2.1 da lista 10 aspetos</a></li>
+</ul>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>As páginas do website devem ter apenas um <code>&lt;h1&gt;</code> atribuído. Nas páginas interiores, o <code>&lt;h1&gt;</code> deve estar atribuído ao título do conteúdo principal dessa página. Já na homepage, o <code>&lt;h1&gt;</code> deve estar atribuído ao logótipo para, em conjunto com um texto alternativo correto, potenciar o SEO da página.</p>
+<p>No <a href="https://www.etf.gov.pt/home">website</a>, foram encontradas páginas sem <code>&lt;h1&gt;</code> atribuído, como por exemplo, não há cabeçalho de nível 1 na página inicial (Figura 1).</p>
+<img src="https://github.com/user-attachments/assets/f7bf999a-e6c0-4bfb-8c1b-45a29ed04477" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1- Análise de cabeçalhos com o <a href="https://chromewebstore.google.com/detail/web-developer/bfbameneiokkgbdmiekhjnmfkcnldhhm">WebDeveloper</a></em></p>
+<p>A página inicial, verificámos que o logótipo principal da homepage tem um link para a própria página. Esta implementação de tornar o logótipo atribuído a uma hiperligação faz direcionar o utilizador para a página onde já se encontra. Apenas nas páginas interiores, o logótipo principal pode ter um link para a página inicial. (Figura 2). </p>
+<img src="https://github.com/user-attachments/assets/fa3f46ae-00bd-4a84-bc40-381f91f902ce" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2- Logótipo da página inicial com link para própria página</em></p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/home">https://www.etf.gov.pt/home</a></li>
+<li><a href="https://www.etf.gov.pt/apoios-financeiros-do-estado">https://www.etf.gov.pt/apoios-financeiros-do-estado</a></li>
+<li><a href="https://www.etf.gov.pt/sector-empresarial-do-estado">https://www.etf.gov.pt/sector-empresarial-do-estado</a></li>
+<li><a href="https://www.etf.gov.pt/destaques">https://www.etf.gov.pt/destaques</a></li>
+<li><a href="https://www.etf.gov.pt/utap">https://www.etf.gov.pt/utap</a></li>
+</ul>
+<p><strong>Recomendações:</strong><br>Devem rever todas as páginas do site, de forma a confirmar que o elemento <code>&lt;h1&gt;</code> está atribuído ao título principal de cada página: </p>
+<ul>
+<li>Na homepage, o elemento <code>&lt;h1&gt;</code> deveria estar atribuído apenas ao logótipo principal “Entidade do Tesouro e Finanças”.</li>
+</ul>
+<p>Recomendamos que seja retirado o link atualmente atribuído ao logótipo na página principal, mantendo esse link nas restantes páginas interiores. Nestas, o texto alternativo da imagem referente ao logotipo da entidade deve ser, por exemplo, <code>alt="Ir para a página principal de Entidade do Tesouro e Finanças”</code>.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-2.2">Requisito 2.2 - Existe uma marcação hierarquizada de títulos e subtítulos na página (h1...h6)</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/9" class="issue-link" target="_blank" rel="noopener noreferrer">issue #9</a> <strong>Existem títulos que não estão sendo atribuídos como cabeçalhos</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.2</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>Existe uma marcação hierarquizada de títulos e subtítulos na página <code>&lt;h1&gt;...&lt;h6&gt;</code>.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n22">ver requisito 2.2 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências</strong></p>
+<ul>
+<li>Os cabeçalhos <code>&lt;h1&gt; ao &lt;h6&gt;</code> devem ser atribuídos a títulos e subtítulos das secções do site. As atribuições corretas destes elementos facilitam a navegação com teclado e com leitores de ecrã.</li>
+</ul>
+<p>Na página <a href="https://www.etf.gov.pt/utap-faq">UTAP - FAQ</a> verificou-se que existem títulos que não estão estruturados como cabeçalhos, diferenciados apenas pela cor em negrito (Figura 1).</p>
+<img src="https://github.com/user-attachments/assets/601ae593-e46d-4e62-8169-7542506a49a9" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 01 - Títulos das perguntas não estruturados como cabeçalhos</em></p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/utap-faqhttps://www.etf.gov.pt/utap-faq">https://www.etf.gov.pt/utap-faqhttps://www.etf.gov.pt/utap-faq</a></li>
+</ul>
+<p><strong>Recomendações</strong><br>Recomendamos a revisão das páginas do website para garantir que os elementos <code>&lt;h1&gt;…&lt;h6&gt;</code> estão atribuídos a títulos e subtítulos das secções relevantes. </p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-3.1">Requisito 3.1 - As células que constituem os cabeçalhos da tabela estão marcadas com o elemento th</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/10" class="issue-link" target="_blank" rel="noopener noreferrer">issue #10</a> <strong>Atribuição incorreta de cabeçalhos semânticos &lt;th&gt;</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.1</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>As células que constituem os cabeçalhos da tabela estão marcadas com o elemento <code>&lt;th&gt;</code>.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n31">ver requisito 3.1 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>As tabelas de dados devem identificar o seu conteúdo com elementos semânticos de HTML corretos, para que os leitores de ecrã consigam referenciar corretamente os cabeçalhos e identificar a tipologia dos dados de cada coluna e linha. No caso dos cabeçalhos das tabelas, estes devem estar marcados com o elemento <code>&lt;th&gt;</code>.  </p>
+<p>Na página “<a href="https://www.etf.gov.pt/o-que-e-o-sector-empresarial-do-estado-see">O que é o SEE?</a>”, a tabela apresenta o título “Setor Público Empresarial (SPE)” marcado incorretamente como <code>&lt;th&gt;</code>. Como o elemento <code>&lt;caption&gt;</code> já contém o título da tabela, a utilização simultânea dos dois elementos pode resultar em leitura duplicada pelos leitores de ecrã. (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/32bb49dc-c5d4-4abb-a379-1f41ec33ca65" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Atribuição incorreta do <code>&lt;th&gt;</code></em> </p>
+<p>Além disso, observamos que existem tabelas em que o <code>&lt;th&gt;</code> é usado só para espaçamento e estética. Na página <a href="https://www.etf.gov.pt/utap-parcerias-publico-privadas">Parcerias Público-privadas</a> a tabela apresenta células  vazias, que não trazem informações úteis para os utilizadores. (Figura 2) </p>
+<img src="https://github.com/user-attachments/assets/8ff2789b-c3d8-4b52-abd0-e0fc4036d8b3" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 – Atributos <code>&lt;th&gt;</code> vazios</em> </p>
+<p>Apesar de existirem outros cabeçalhos válidos, isto cria cabeçalhos sem rótulo e prejudica a interpretação por leitores de ecrã e associação correta entre cabeçalhos e dados. </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/o-que-e-o-sector-empresarial-do-estado-see">https://www.etf.gov.pt/o-que-e-o-sector-empresarial-do-estado-see</a></li>
+<li><a href="https://www.etf.gov.pt/utap-parcerias-publico-privadas">https://www.etf.gov.pt/utap-parcerias-publico-privadas</a></li>
+</ul>
+<p><strong>Recomendações:</strong></p>
+<ul>
+<li>Recomenda‑se remover <code>&lt;th&gt;</code>, quando ele não possuir conteúdo associado, podendo levar utilizadores de leitores de ecrã a interpretar que existe informação em falta.</li>
+<li>Substituir os <code>&lt;th&gt;</code> vazios por , quando não representam um cabeçalho, ou, se forem realmente cabeçalhos, inserir rótulo acessível. Não devem existir <code>&lt;th&gt;</code> sem conteúdo que descreva a coluna ou linha.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-3.2">Requisito 3.2 - A legenda da tabela está marcada com o elemento caption</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/11" class="issue-link" target="_blank" rel="noopener noreferrer">issue #11</a> <strong>Há títulos de tabelas que não estão marcadas com o elemento &lt;caption&gt;</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.2</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>A legenda da tabela está marcada com o elemento <code>&lt;caption&gt;</code><br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n32">ver requisito 3.2 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>As tabelas de dados devem estar acompanhadas por uma legenda ou um título marcado com o elemento para que seja explícito o âmbito das mesmas ao serem lidas pelas tecnologias de apoio. [Text Wrapping Break]Verificámos que as tabelas não estão devidamente acompanhadas por uma legenda ou título, como por exemplo, na página <a href="https://www.etf.gov.pt/estatisticas">Estatísticas</a> (Figura 1). Todas as tabelas da página são abarcadas pelo mesmo cabeçalho, no entanto, mostram dados de anos diferentes.</p>
+<img src="https://github.com/user-attachments/assets/d0995b8c-3f1c-414f-8dc2-c64aef9b0572" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - O título da tabela não está atribuído ao  <code>&lt;caption&gt;</code></em> </p>
+<p>Devem ser adicionadas legendas ou títulos às tabelas, corretamente identificados com o elemento  <code>&lt;caption&gt;</code> . Em alternativa, é possível associar elementos de texto à respetiva tabela através do aria-labelledby. No caso da Figura 1, pode ser relevante incluir o ano que está na primeira célula da tabela através de um aria-labelledby. </p>
+<p>Há tabelas com o elemento <code>&lt;caption&gt;</code> atribuído ao texto errado. O elemento <code>&lt;caption&gt;</code> deve ser atribuído ao título ou legenda corretos para identificar claramente o conteúdo da tabela que acompanha. Na página <a href="https://www.etf.gov.pt/sucessao-a-entidades-extintas">Sucessão a Entidades Extintas</a>, existe um elemento atribuído a uma observação, cujo objetivo é diferente da legenda de uma tabela (Figura 2).</p>
+<img src="https://github.com/user-attachments/assets/e70e030e-7dcb-4660-875a-78e4a3836f74" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 – Atributo <code>&lt;caption&gt;</code> atribuído ao texto errado, uma observação (Obs)</em> </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/estatisticas">https://www.etf.gov.pt/estatisticas</a></li>
+</ul>
+<p><strong>Recomendações:</strong></p>
+<p>Recomendamos que o elemento <code>&lt;caption&gt;</code> seja atribuído apenas ao título ou legenda da tabela, e não a outro tipo de texto. Para mais informações sobre como legendar tabelas, pode ser consultada a página <a href="https://www.w3.org/WAI/tutorials/tables/caption-summary/">Caption &amp; Summary</a> da WAI.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-4.1">Requisito 4.1 - Ao clicar com o rato na etiqueta, o cursor surge no respetivo campo de edição</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/12" class="issue-link" target="_blank" rel="noopener noreferrer">issue #12</a> <strong>Existem etiquetas que não estão associadas ao seu respetivo campo</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.1</span><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>Ao clicar com o rato na etiqueta, o cursor surge no respetivo campo de edição.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n41">ver requisito 4.1 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>Os campos de formulários, como por exemplo, o <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code> ou <code>&lt;areatext&gt;</code>, devem ter as suas legendas estruturadas com o elemento <code>&lt;label&gt;</code> , para que ao clicar na legenda, apareça o cursor. Isso pode ser feito por exemplo, utilizando o atributo for ou inserir o elemento dentro da label na estrutura do HTML.</p>
+<p>No formulário da página <a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">Pesquisar</a>, quando se clica nas legendas dos campos, o cursor não surge no respetivo campo de edição. Isto acontece porque a etiqueta não está devidamente associada ao campo: o atributo “for” da não corresponde o “id” do campo de input (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/e55d0f7c-d60b-49d7-bdff-2c6c494906a2" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - O "for" da etiqueta não corresponde ao "id" do campo</em>  </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">https://www.etf.gov.pt/pesquisar#gsc.tab=0</a></li>
+</ul>
+<p><strong>Recomendações:</strong><br>Recomendamos a revisão das páginas do site para garantir que todos os formulários estão bem construídos, considerando que: </p>
+<ul>
+<li><p>A legenda do campo deve estar estruturada no elemento e deve estar associada ao campo.  </p>
+</li>
+<li><p>O <em>for</em> da legenda e o <em>id</em> do campo de input devem ser iguais.</p>
+</li>
+</ul>
+<p>Alguns exemplos de estrutura seriam: </p>
+<p><code>&lt;label for="firstname"&gt;Primeiro nome:&lt;/label&gt;</code><br><code>&lt;input type="text" name="first" id="firstname"&gt;</code><br><code>&lt;label&gt;Primeiro nome:&lt;input type="text" name="firstname"&gt;&lt;/label&gt;</code></p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-4.2">Requisito 4.2 - É possível identificar os campos de preenchimento obrigatório quando se usa apenas um leitor de ecrã</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/13" class="issue-link" target="_blank" rel="noopener noreferrer">issue #13</a> <strong>Inexistência de formulários com campos de preenchimento obrigatório</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.2</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>É possível identificar os campos de preenchimento obrigatório quando se usa apenas um leitor de ecrã.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n42">ver requisito 4.2 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>Não encontrámos formulários com campos de preenchimento obrigatório, pelo que o requisito não se aplica (N/A).</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-4.3">Requisito 4.3 - É possível localizar e ler as mensagens de erro usando apenas um leitor de ecrã</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/14" class="issue-link" target="_blank" rel="noopener noreferrer">issue #14</a> <strong>Inexistência de formulários que necessitem de mensagens de erro</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.3</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>É possível localizar e ler as mensagens de erro usando apenas um leitor de ecrã.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n43">ver requisito 4.3 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidencias:</strong><br>Não encontrámos formulários que necessitem de mensagens de erro, pelo que o requisito não se aplica (N/A).</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-5.1">Requisito 5.1 - A imagem ou gráfico tem um equivalente alternativo em texto curto e correto</h4>
+<div class="requirement-content">
+<p><span class="status-ok"><span class="sr-only">etiqueta: </span>OK</span> (no entanto contém 1 melhoria que se recomenda efetuar)</p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/15" class="issue-link" target="_blank" rel="noopener noreferrer">issue #15</a> <strong>Há imagens decorativas sem atribuição do alt nulo</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.1</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><p>A imagem ou gráfico tem um equivalente em texto curto e correto.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n51">ver requisito 5.1 na lista 10 aspetos</a></p>
+<p><strong>Evidências:</strong><br>As imagens decorativas não acrescentam informação ao conteúdo da página, costumando estar acompanhadas de uma descrição textual ou servirem para tornar a página mais apelativa. Estas imagens podem conter um texto alternativo nulo (alt=””) no HTML, ou estarem apenas como background-image em CSS.</p>
+<p>Na <a href="https://www.etf.gov.pt/home">página inicial</a>, possui uma imagem, que mesmo sendo decorativa, deve incluir o atributo <code>alt=""</code>. A sua ausência pode levar os leitores de ecrã a anunciar informação irrelevante, e pode prejudicar a experiência de navegação. (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/2b8700aa-e178-4ec9-9b29-6a54cd40e8d1" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1- Imagem decorativa sem <code>&lt;alt&gt;</code>atribuído</em></p>
+<p>Definir um alt vazio garante que a imagem é corretamente ignorada pelas tecnologias de apoio.</p>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/home">https://www.etf.gov.pt/home</a></li>
+</ul>
+<p><strong>Recomendações</strong><br>Recomendamos a revisão das imagens decorativas para que incluam um texto alternativo nulo da seguinte forma: <code>&lt;img… alt=””&gt;</code>. Em alternativa, estas podem ser colocadas em CSS como background-image.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-5.2">Requisito 5.2 - O gráfico é acompanhado de uma descrição longa</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/16" class="issue-link" target="_blank" rel="noopener noreferrer">issue #16</a> <strong>Há organogramas sem descrição do conteúdo</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.2</span></div>
+                <div class="issue-content"><blockquote>
+<p>O gráfico é acompanhado de uma descrição longa.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n52">ver requisito 5.2 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>A imagem complexa deve ser acompanhada não só de uma descrição curta, colocada como texto alternativo da imagem, mas também de uma descrição detalhada sobre o seu conteúdo, que represente de forma textual a informação mais relevante. Podemos considerar neste critério elementos como gráficos, diagramas, mapas, imagens, infografias, entre outros.</p>
+<p>Verificou-se que o gráfico da página <a href="https://www.etf.gov.pt/organograma#conteudo">Organograma</a> não está acessível a<br>leitores de ecrã, nem está acompanhado de uma descrição ou tabela que represente o seu conteúdo de forma textual. (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/547669c2-1887-41e4-aef8-43e4a89dee98" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Organograma sem descrição longa</em></p>
+<p>A ausência de um conteúdo alternativo complementar que descreva a informação apresentada na imagem neste caso que contém dados sobre funções e a estrutura Municipal. Deste modo, utilizadores de tecnologias de apoio, nomeadamente leitores de ecrã, podem não conseguir compreender a estrutura hierárquica e organizacional, uma vez que a informação é disponibilizada sem uma descrição longa alternativa. Apenas com o texto alternativo “alt=organigrama ETF”.</p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/organograma#conteudo">https://www.etf.gov.pt/organograma#conteudo</a></li>
+</ul>
+<p><strong>Recomendações:</strong><br>Recomendamos a revisão das páginas do site para garantir que todos os elementos deste género são acompanhados de uma descrição detalhada do conteúdo mais relevante</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-5.3">Requisito 5.3 - As imagens-link têm um equivalente alternativo correto</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/17" class="issue-link" target="_blank" rel="noopener noreferrer">issue #17</a> <strong>As imagens-link não possuem um texto alternativo</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.3</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>As imagens-link têm um equivalente alternativo correto.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n53">ver requisito 5.3 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>As imagens-link são links cujo conteúdo é composto por uma imagem e devem ser corretamente legendadas para serem interpretadas como texto quando são lidas pelas tecnologias de apoio. O texto alternativo deve ser curto, claro e servir de síntese do seu conteúdo. </p>
+<p>Na <a href="https://www.etf.gov.pt/">página inicial</a>, as imagens‑link do carrossel apresentam textos alternativos incompletos. Por exemplo, a imagem que possui os textos "SEE - Instruções Prestação de Contas 2025" e “Ver mais” ou seja informações visíves, não estão incluídas descrições com seus respetivos textos alternativos. (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/b8a0c6e5-3985-4bf3-bc61-b032a1e7266c" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Imagens-link sem texto alternativo com texto visível “Ver mais”</em> </p>
+<p>Este detalhe é relevante, pois indica ao utilizador que, ao clicar na imagem, poderá aceder a conteúdos adicionais. No entanto, utilizadores que recorrem a tecnologias de apoio não recebem esse contexto devido ao texto alternativo atual estar incompleto, comprometendo a perceção da finalidade do link.</p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/">https://www.etf.gov.pt/</a></li>
+</ul>
+<p><strong>Recomendações:</strong></p>
+<p>Incluir textos alternativos das imagens‑link do carrossel, garantindo que descrevem de forma completa tanto o conteúdo visual como a finalidade da interação, incluindo as descrições alternativas respetivas aos conteúdos e quando esta é a ação esperada ao clicar. </p>
+<p>Desta forma, os utilizadores que recorrem a tecnologias de apoio passam a receber o mesmo contexto funcional dos utilizadores que veem a imagem, assegurando uma navegação mais percepcionável e equitativa. </p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-7.1">Requisito 7.1 - Deve ser possível ativar os botões de controlo do leitor quer com o rato quer com o teclado</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/20" class="issue-link" target="_blank" rel="noopener noreferrer">issue #20</a> <strong>Não foram encontrados players no website</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 7.1</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>Deve ser possível ativar os botões de controlo do leitor quer com o rato quer com o teclado.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n71">ver requisito 7.1 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>O requisito não é aplicável, uma vez que não encontramos leitores de multimédia no site (vídeo ou áudio). Sendo assim o requisito será “Não Aplicável”. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-7.2">Requisito 7.2 - O vídeo ou o áudio deve conter preferencialmente legendas fechadas sincronizadas. Caso não seja possível, no mínimo, deve disponibilizar-se uma transcrição textual</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/21" class="issue-link" target="_blank" rel="noopener noreferrer">issue #21</a> <strong>Não foram encontrados players no website</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 7.2</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>O vídeo ou áudio deve conter preferencialmente legendas fechadas sincronizadas.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n72">ver requisito 7.2 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>O requisito não é aplicável, uma vez que não encontramos leitores de multimédia no site (vídeo ou áudio). Sendo assim o requisito será “Não Aplicável”. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-8.3">Requisito 8.3 - Quando se retira a CSS, deve ser possível reconhecer a semântica dos diversos elementos</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/25" class="issue-link" target="_blank" rel="noopener noreferrer">issue #25</a> <strong>Existem conteúdos que não estão estruturados como lista</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 8.3</span></div>
+                <div class="issue-content"><blockquote>
+<p>Quando se retira o CSS, deve ser possível reconhecer a semântica dos diversos elementos.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n83">ver requisito 8.3 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>Durante análise do website, verificámos que existem conteúdos não estão estruturadas como listas. Por exemplo, na página <a href="https://www.etf.gov.pt/outras-areas-relevantes">Outras Áreas relevantes</a> (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/042a8799-cb68-49d3-8e27-ebdd45e32f6d" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Conteúdos não estruturados como lista</em>  </p>
+<p>Existem conteúdos que podem ser organizados (textos, links, etc…)  como listas  <code>&lt;ul&gt;&lt;li&gt;</code>, no entanto, estão sendo agrupados por divs.</p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/entidade-do-tesouro-e-financas">Entidade do Tesouro e Finanças</a></li>
+<li><a href="https://www.etf.gov.pt/sector-empresarial-do-estado">Sector Empresarial do Estado (SEE)</a></li>
+<li><a href="https://www.etf.gov.pt/apoios-financeiros-do-estado">Apoios Financeiros do Estado</a></li>
+<li><a href="https://www.etf.gov.pt/utap">UTAP</a></li>
+</ul>
+<p><strong>Recomendações:</strong><br>Recomendamos rever todas as páginas do website para garantir que os grupos de links sejam organizados de forma lógica através de listas <code>&lt;ul&gt;&lt;li&gt; e &lt;ol&gt;&lt;li&gt;</code>.  </p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/24" class="issue-link" target="_blank" rel="noopener noreferrer">issue #24</a> <strong>Carrossel não está estruturado como lista</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 8.3</span></div>
+                <div class="issue-content"><blockquote>
+<p>Quando se retira o CSS, deve ser possível reconhecer a semântica dos diversos elementos.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n83">ver requisito 8.3 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>Os componentes presentes nas páginas devem estar corretamente estruturados para garantir a correta leitura e funcionamento.  </p>
+<p>Ao remover a folha de estilo da homepage, é possível identificar que o elemento apresentado não está semanticamente correto, os seus elementos não se encontram de uma forma estruturada como lista. (Figura 1) </p>
+<img src="https://github.com/user-attachments/assets/0f22f03b-1fb6-4c6e-860b-4e9d3a90a1d6" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Carrossel não está estruturado como lista</em></p>
+<p>A ausência de uma estrutura de lista no carrossel compromete a experiência de utilizadores de leitores de ecrã, que deixam de receber a informação de forma sequencial e relacionadas com as imagens-link. Em vez de recorrer a elementos <code>&lt;div&gt;</code>, deve ser utilizada uma lista para garantir uma marcação mais adequada e acessível. (Figura 2)</p>
+<img src="https://github.com/user-attachments/assets/0d3680e1-bf3d-460f-9cdf-8bef6ad02ebb" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 – Análise do carrossel estruturado como <code>&lt;div&gt;</code></em> </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/">https://www.etf.gov.pt/</a></li>
+</ul>
+<p><strong>Recomendações:</strong></p>
+<p>Recomendamos que neste caso, seja revista a estrutura semântica do componente carrossel para garantir o correto funcionamento do mesmo. Para mais informações é possível consultar boas práticas para a implementação do elemento carrossel no código na página <a href="https://www.w3.org/WAI/tutorials/carousels/structure/">Carousel Structure</a> da W3C.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-8.5">Requisito 8.5 - A maquetização da página é feita sem recorrer ao elemento table</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/27" class="issue-link" target="_blank" rel="noopener noreferrer">issue #27</a> <strong>Há uma tabela layout na página “Pesquisar”</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 8.5</span><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>A maquetização da página é feita sem recorrer ao elemento <code>&lt;table&gt;</code>.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n85">ver requisito 8.5 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>Uso indevido do elemento HTML <code>&lt;table&gt;</code> para estruturar o layout da página <a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">Pesquisar</a>, em vez de utilizar elementos semânticos ou genéricos adequados à composição visual responsiva. O elemento está a ser utilizado exclusivamente para organizar e alinhar conteúdos na página, o que caracteriza um padrão de maquetização obsoleto e não acessível. (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/d28adcd0-e9b6-4319-80c8-072b41d268bb" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Tabela layout para composição visual</em></p>
+<p>Sendo assim, neste o atributo <code>&lt;table&gt; </code> está sendo usado para efeitos de maquetização, isto é, para estruturar visualmente elementos da interface e alinhar componentes da pesquisa, quando na verdade semanticamente é identificada como uma tabela de dados como demonstra análise do Access Monitor. (Figura 2)</p>
+<img src="https://github.com/user-attachments/assets/ad0a6aff-b994-48fe-be9c-a38391f6c702" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 – Tabela layout interpretada como tabela de dados</em></p>
+<p>Este tipo de utilização não cumpre o presente requisito, que determina que para garantir acessibilidade e organização do conteúdo no HTML é necessário construções com elementos semânticos adequados (por ex., <code>&lt;main&gt;, &lt;section&gt;, &lt;header&gt;</code>). </p>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">https://www.etf.gov.pt/pesquisar#gsc.tab=0</a></li>
+</ul>
+<p><strong>Recomendações:</strong><br>É necessário rever estrutura HTML do website. Evitar utilizar elementos de tabela (<code>&lt;table&gt;, &lt;tr&gt;, &lt;td&gt;</code>) para fins de layout. Em vez disso, utilize CSS para controlar a apresentação e o posicionamento do conteúdo, garantindo uma separação adequada entre estrutura e estilo. Adicionalmente, evite o uso do atributo role="presentation" como forma de ocultar tabelas semânticas, pois isso pode comprometer a interpretação por tecnologias de apoio. Utilizar tabelas apenas quando os dados forem efetivamente tabulares.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-9.1">Requisito 9.1 - Quando a caixa de diálogo é aberta, o foco (cursor do Browser) move-se para um elemento dentro da caixa de diálogo</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/28" class="issue-link" target="_blank" rel="noopener noreferrer">issue #28</a> <strong> Não existem modais no website</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 9.1</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>Quando a caixa de diálogo é aberta, o foco (cursor do Browser) move-se para um elemento dentro da caixa de diálogo<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n91">ver requisito 9.1 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>O requisito não é aplicável, uma vez que não encontramos modais no website. Sendo assim o requisito será “Não Aplicável”. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-9.2">Requisito 9.2 - Quando uma caixa de diálogo está aberta, a navegação com teclado (Browser ou Tecnologia de apoio) tem de ficar circunscrita aos elementos que compõem a caixa de diálogo</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/29" class="issue-link" target="_blank" rel="noopener noreferrer">issue #29</a> <strong>Não existem modais no website</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 9.2</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>Quando uma caixa de diálogo está aberta, a navegação com teclado (Browser ou Tecnologia de apoio) tem de ficar circunscrita aos elementos que compõem a caixa de diálogo<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n92">ver requisito 9.2 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>O requisito não é aplicável, uma vez que não encontramos modais no website. Sendo assim o requisito será “Não Aplicável”. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-9.3">Requisito 9.3 - A caixa de diálogo tem de ter um mecanismo que permita sair ou fechar a caixa, quer através de teclado quer através de um dispositivo apontador</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/30" class="issue-link" target="_blank" rel="noopener noreferrer">issue #30</a> <strong>Não existem modais no website</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 9.3</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>A caixa de diálogo tem de ter um mecanismo que permita sair ou fechar a caixa, quer através de teclado quer através de um dispositivo apontador<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n93">ver requisito 9.3 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>O requisito não é aplicável, uma vez que não encontramos modais no website. Sendo assim o requisito será “Não Aplicável”. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-9.4">Requisito 9.4 - Quando a caixa de diálogo fecha, o foco (cursor do Browser) deve voltar ao elemento interativo que a invocou</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/31" class="issue-link" target="_blank" rel="noopener noreferrer">issue #31</a> <strong>Não existem modais no website</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 9.4</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>Quando a caixa de diálogo fecha, o foco (cursor do Browser) deve voltar ao elemento interativo que a invocou<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n94">ver requisito 9.4 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>O requisito não é aplicável, uma vez que não encontramos modais no website. Sendo assim o requisito será “Não Aplicável”. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-10.1">Requisito 10.1 - Nos ficheiros PDF é possível, no mínimo, extrair o conteúdo textual para formato TXT</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/32" class="issue-link" target="_blank" rel="noopener noreferrer">issue #32</a> <strong>Não foi possível extrair o texto do documento PDF</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 10.1</span><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>Nos ficheiros PDF é possível, no mínimo, extrair o conteúdo textual para formato TXT.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n101">ver requisito 10.1 na lista 10 aspetos</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>Foi encontrado em certos PDF's imagens texto ou imagens de gráficos em que o seu conteúdo não pode ser extraido como TXT.</p>
+<p>Foram identificados vários documentos PDF na página de <a href="https://www.etf.gov.pt/recursos-humanos">Recursos Humanos</a> em que os conteúdos da "Lista nominativa" não podem ser extraídos como TXT. Sendo assim, apresentam limitações de acessibilidade, impedindo a leitura do conteúdo por tecnologias de apoio, como leitores de ecrã.</p>
+<img src="https://github.com/user-attachments/assets/7da361f9-9555-49cb-8d9d-e066e547eea8" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - PDF da <a href="https://www.etf.gov.pt/media/doc/lista_reposiciona_TSEOFP_JUN_2024.pdf">Lista nominativa</a> não é acessível</em></p>
+<p>Como consequência, utilizadores com deficiência visual ou que dependem dessas tecnologias poderão não conseguir aceder à informação disponibilizada, comprometendo os princípios de acessibilidade e inclusão digital.</p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/media/doc/Lista_nominativa_TS_janeiro_2024.pdf">https://www.etf.gov.pt/media/doc/Lista_nominativa_TS_janeiro_2024.pdf</a></li>
+<li><a href="https://www.etf.gov.pt/media/doc/DGTF-Lista-nominativa-transicao-DL-88-2023-assinada.pdf">https://www.etf.gov.pt/media/doc/DGTF-Lista-nominativa-transicao-DL-88-2023-assinada.pdf</a></li>
+<li><a href="https://www.etf.gov.pt/media/doc/lista_reposiciona_TSEOFP_JUN_2024.pdf">https://www.etf.gov.pt/media/doc/lista_reposiciona_TSEOFP_JUN_2024.pdf</a></li>
+</ul>
+<p><strong>Recomendações:</strong></p>
+<p>Deve ser possível extrair todo o conteúdo de texto dos ficheiros PDF. Uma alternativa seria recorrer a uma solução de Reconhecimento Óptico de Caracteres (OCR), como a disponibilizada pela Adobe, para converter corretamente o conteúdo.</p>
+</div>
+              </li></ul>
+</div>
+
+      </div>
+      <div class="checklist-section">
+        <h3 id="checklist-conteudo">Checklist Conteúdo</h3>
+        <p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+        
+      <p><strong>Nível de conformidade:</strong></p>
+        <ul>
+          <li><strong>Checklist Conteúdo</strong>: 35.3% (6/17)
+            <ul>
+              <li>Requisitos avaliados: 17 (17 aplicáveis)</li>
+              <li>Requisitos OK: 6</li>
+              <li>Requisitos NOK: 11</li>
+              
+            </ul>
+          </li>
+        </ul>
+    
+        <h4 class="requirement-title" id="req-conteudo-r-1.1">Requisito 1.1 - O sítio Web apresenta um resumo breve do seu propósito, visível sem se fazer scroll</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/33" class="issue-link" target="_blank" rel="noopener noreferrer">issue #33</a> <strong>Não existe um resumo do propósito do site na homepage</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.1</span></div>
+                <div class="issue-content"><blockquote>
+<p>O sítio Web apresenta um resumo breve do seu propósito, visível sem fazer scroll.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n11">ver requisito 1.1 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>Na página principal do website, não existe qualquer resumo do propósito na da <a href="https://www.etf.gov.pt/">Entidade do Tesouro e Finanças</a>, pelo que deve ser adicionado.</p>
+<img src="https://github.com/user-attachments/assets/110a05ed-2e76-4d6a-89a9-b993ec9e5a09" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Imagem da página principal sem fazer scroll não apresenta propósito</em></p>
+<p><strong>URL's a verificar:</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/">https://www.etf.gov.pt/</a></li>
+</ul>
+<p> <strong>Recomendações:</strong></p>
+<p>O propósito deve transmitir, de forma clara, o que o utilizador pode efetivamente encontrar e realizar no website. Esse propósito deve ser imediatamente visível na página, sem ser necessário fazer scroll, avançar no slideshow, entre outros.</p>
+<p>Como exemplo de uma boa prática, é possível verificar no website <a href="https://selo.usabilidade.gov.pt/">selo.usabilidade.gov</a> que o seu propósito está escrito no topo da página (Figura 2)</p>
+<img src="https://github.com/user-attachments/assets/dbc7d6b1-77db-4e77-a871-4efb4d2ca1ae" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 - Recomendação frase de propósito do website selo.usabilidade.gov</em></p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-1.2">Requisito 1.2 - Os termos mais complexos têm uma definição agregada</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/34" class="issue-link" target="_blank" rel="noopener noreferrer">issue #34</a> <strong>Existem termos complexos sem definição</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.2</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span></div>
+                <div class="issue-content"><blockquote>
+<p>Os termos mais complexos têm uma definição agregada.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n12">ver requisito 1.2 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<ul>
+<li>Em sites com termos técnicos ou complexos, que sejam difíceis de compreender, deve existir uma página de glossário com as definições dessas palavras. O glossário deve apresentar a definição dos termos e conceitos de forma clara e breve, para que seja facilmente compreensível pelos utilizadores.</li>
+</ul>
+<p>Apesar de existirem explicações introdutórias na maioria das páginas, verificou-se que existem termos complexos e siglas sem definição, inclusive nos textos explicativos. Alguns exemplos são as siglas “IFI’s” na página <a href="https://www.etf.gov.pt/participacoes-e-contribuicoes-internacionais">Participações e Contribuições Internacionais</a> e utilização de algoritmos romanos no corpo do texto por exemplo " xix". (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/c8a1430a-2397-4c5b-9d4d-a2851e97cc75" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p>Figura 1 - Imagem com siglas sem definições agregadas.</p>
+<p>Além disso na página “<a href="https://www.etf.gov.pt/apoios-a-exportacao-e-ao-investimento">Apoio à exportação e ao Investimento</a>” a sigla “OCDE” e o uso de terminologias em latim “Ex ante” e “Ex post” sem explicação, dificultam a compreensão por utilizadores leigos e leitores de ecrã. </p>
+<img src="https://github.com/user-attachments/assets/5a44868d-dece-4b60-af89-c1fda02a8446" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p>Figura 2 - Imagem com termos complexos sem definição agregada.</p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/apoios-a-exportacao-e-ao-investimento">https://www.etf.gov.pt/apoios-a-exportacao-e-ao-investimento</a> (Sigla: OCDE)</li>
+<li><a href="https://www.etf.gov.pt/participacoes-e-contribuicoes-internacionais">https://www.etf.gov.pt/participacoes-e-contribuicoes-internacionais</a> (Siglas: GPEARI e IFI's)</li>
+<li><a href="https://www.etf.gov.pt/utap-procedimentos-ppp">https://www.etf.gov.pt/utap-procedimentos-ppp</a> (Sigla: PPP)</li>
+<li><a href="https://www.etf.gov.pt/utap-faq">https://www.etf.gov.pt/utap-faq</a> (Sigla: PPP sem definição agregada em todas perguntas)</li>
+</ul>
+<p> <strong>Recomendações:</strong><br>Recomenda-se que seja adicionado um glossário, que inclua as definições de siglas e outras expressões complexas que existam no website, para que seus significados estejam acessíveis sempre que necessário na navegação do website. Em alternativa, ao utilizar termos técnicos, incluir definições visíveis e substituir por linguagem clara, por exemplo: </p>
+<ul>
+<li>Ex ante (valor previsto)  </li>
+<li>Ex post (valor realizado após a atividade)</li>
+</ul>
+<p>Como exemplo podem visualizar o glossaário do <a href="https://www.acessibilidade.gov.pt/glossario/">acessibilidade.gov</a>.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-1.4">Requisito 1.4 - A informação sobre a entidade responsável pelo conteúdo está em todas as páginas</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/36" class="issue-link" target="_blank" rel="noopener noreferrer">issue #36</a> <strong>Não há referência à entidade responsável pelos conteúdos</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.4</span><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span></div>
+                <div class="issue-content"><blockquote>
+<p>A informação sobre a entidade responsável pelo conteúdo está em todas as páginas.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n14">ver requisito 1.4 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<ul>
+<li>Todas as páginas devem apresentar o nome da entidade responsável pelos conteúdos publicados no site. O nome da entidade pode ser apresentado através de um logótipo ou texto, mas deve estar por extenso.</li>
+</ul>
+<p>Não foi encontrado o nome da entidade responsável pelo conteúdo em nenhuma página do website, por exemplo na página <a href="https://www.etf.gov.pt/utap-faq">FAQ</a> (Figura 1).</p>
+<img src="https://github.com/user-attachments/assets/5e9cae68-d385-44e4-b59d-2331691041c3" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Entidade não é identificada na página <a href="https://www.etf.gov.pt/utap-faq">FAQ</a></em></p>
+<p><strong>URL's a verificar:</strong> </p>
+<ul>
+<li><a href="https://www.etf.gov.pt/">https://www.etf.gov.pt/</a> (Todo website)</li>
+<li><a href="https://www.etf.gov.pt/utap-faq">https://www.etf.gov.pt/utap-faq</a> (Páginas interiores)</li>
+</ul>
+<p> <strong>Recomendações:</strong></p>
+<p>Deve ser adicionado o nome da entidade por extenso em todo o website, como é possível observar no <a href="https://www.acessibilidade.gov.pt/">acessibilidade.gov.pt</a>:</p>
+<img src="https://github.com/user-attachments/assets/d7b03d4f-3088-4d1c-994a-f68039a6642f" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Exemplo de Entidade referenciada no rodapé do <a href="https://www.acessibilidade.gov.pt/">acessibilidade.gov.pt</a></em></p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-2.3">Requisito 2.3 - Blocos e linhas de texto com largura não superior a 100 caracteres</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/39" class="issue-link" target="_blank" rel="noopener noreferrer">issue #39</a> <strong>Existem blocos de texto com mais de 100 caracteres por linha</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.3</span></div>
+                <div class="issue-content"><blockquote>
+<p>Blocos e linhas de texto com largura não superior a 100 caracteres.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n23">ver requisito 2.3 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>Para assegurar uma boa leitura, as linhas de texto devem ter até 80 caracteres (incluindo espaços). No limite, podem ir até aos 100 caracteres (incluindo espaços). </p>
+<p>Verificámos que o website possui blocos de texto com mais de 100 caracteres por linha. Por exemplo, na página <a href="https://www.etf.gov.pt/apoios-a-exportacao-e-ao-investimento">Apoios à Exportação e ao Investimento</a>, a linha de texto chega aos 168 caracteres (Figura 1). </p>
+<img src="https://github.com/user-attachments/assets/899abae1-77fa-4535-a163-14552a4ad1c6" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - A linha de texto ultrapassa os caracteres mínimos recomendados.</em> </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/bonificacoes-e-subsidios">https://www.etf.gov.pt/bonificacoes-e-subsidios</a> (160 caracteres)</li>
+<li><a href="https://www.etf.gov.pt/missao">https://www.etf.gov.pt/missao</a> (164 caracteres)</li>
+<li><a href="https://www.etf.gov.pt/legislacao">https://www.etf.gov.pt/legislacao</a> (165 caracteres)</li>
+</ul>
+<p> <strong>Recomendações:</strong><br>Recomenda-se que seja definida uma largura máxima para as caixas de texto (max-width, em CSS), com unidades relativas ao tamanho de fonte (unidades em ou rem) para garantir que não é ultrapassado o número máximo de caracteres por linha, assegurando uma leitura confortável.</p>
+<ul>
+<li>Rever todo o website e aplicar as boas práticas de acessibilidade</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-2.4">Requisito 2.4 - O espaçamento entre linhas não é inferior a 1.5x o tamanho da letra</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/40" class="issue-link" target="_blank" rel="noopener noreferrer">issue #40</a> <strong>O espaçamento entre linhas está abaixo do recomendado</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.4</span></div>
+                <div class="issue-content"><blockquote>
+<p>O espaçamento entre linhas não é inferior a 1.5x o tamanho da letra.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n24">ver requisito 2.4 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<ul>
+<li>Para assegurar uma boa leitura, o espaçamento entre linhas não deve ser inferior a 1.5x em relação ao tamanho do texto a ser analisado.</li>
+</ul>
+<p>Na <a href="https://www.etf.gov.pt/utap-procedimentos-ppp">página inicial</a>, há blocos de textos com espaçamento inferior ao recomendado, por exemplo nos títulos dos concursos, em que o espaçamento entre linhas é de 32px para um tamanho de letra de 38.4px. (Figura 1)  </p>
+<img src="https://github.com/user-attachments/assets/dbd2ec2c-0d8f-41f0-8cde-258f4dfc87d3" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Títulos com espaçamento inferior ao recomendado.</em></p>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/utap-procedimentos-ppp">https://www.etf.gov.pt/utap-procedimentos-ppp</a></li>
+</ul>
+<p> <strong>Recomendações:</strong><br>Para a evidência apresentada, o espaçamento deveria ser, no mínimo 48px. É necessário rever todo website para garantir o espaçamento mínimo recomendado, relativo ao tamanho da letra.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-3.1">Requisito 3.1 - Nenhum nível de navegação tem mais de 9 opções</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/41" class="issue-link" target="_blank" rel="noopener noreferrer">issue #41</a> <strong>O  menu ETF ultrapassa 9 opções no nível “Sector Empresarial do Estado”</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.1</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span></div>
+                <div class="issue-content"><blockquote>
+<p>Nenhum nível de navegação tem mais de 9 opções.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n31">ver requisito 3.1 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<ul>
+<li>As <a href="https://www.nngroup.com/videos/number-items-navigation-menu/">boas práticas</a> recomendam que nenhum nível do menu deve ter mais do que 9 opções. A navegação deve ser equilibrada e não deve exigir muito esforço cognitivo por parte dos utilizadores, que normalmente retêm entre 5 a 9 opções na memória de curto prazo.</li>
+</ul>
+<p>O <a href="https://www.etf.gov.pt/">website</a> apresenta no nível “Sector Empresarial do Estado” existem 15 opções, o que significa que está acima do número de opções recomendado. (Figura 1) </p>
+<img src="https://github.com/user-attachments/assets/61cbfe0c-8950-45e5-8d64-240f38e69bbb" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Menu com mais de 9 opções</em> </p>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/">https://www.etf.gov.pt/</a> (Menu disponível em todo website)</li>
+</ul>
+<p> <strong>Recomendações:</strong></p>
+<p>Deve ser feita uma revisão da arquitetura de informação do menu de forma a garantir que não ultrapasse 9 opções em cada nível do mesmo.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-3.2">Requisito 3.2 - A navegação principal está sempre visível e sempre no mesmo local</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/42" class="issue-link" target="_blank" rel="noopener noreferrer">issue #42</a> <strong>A navegação principal do site está colapsada em desktop</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.2</span></div>
+                <div class="issue-content"><blockquote>
+<p>A navegação principal está sempre visível e sempre no mesmo local.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n32">ver requisito 3.2 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<ul>
+<li>No caso de breakpoints superiores, normalmente considerados para desktop, devem estar imediatamente visíveis no ecrã pelo menos as opções de 1º nível porque, à partida, existe espaço para tal.</li>
+<li>No caso de <strong>breakpoints inferiores,</strong> normalmente considerados para tablet e mobile, o menu pode manter-se colapsado.</li>
+<li>Independentemente da página, o menu deve estar sempre posicionado no mesmo local.</li>
+</ul>
+<p>Em breakpoints superiores, o menu principal do <a href="https://www.etf.gov.pt/">website</a> está colapsado e só é possível expandi-lo a partir do botão “Menu hambúrguer”. Por isso, as opções de primeiro nível não são imediatamente visíveis para os utilizadores.  (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/45643769-19bf-4891-bb5d-3445a3de80a4" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Menu colapsado no desktop</em></p>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/">https://www.etf.gov.pt/</a> (Menu disponível em todo website)</li>
+</ul>
+<p> <strong>Recomendações:</strong><br>Em breakpoints superiores, as opções de 1º nível do menu devem estar sempre visíveis na página enquanto existir espaço.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-3.3">Requisito 3.3 - As hiperligações de texto não devem ser diferenciadas apenas com base na cor</h4>
+<div class="requirement-content">
+<p><span class="status-ok"><span class="sr-only">etiqueta: </span>OK</span> (no entanto contém 1 melhoria que se recomenda efetuar)</p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/43" class="issue-link" target="_blank" rel="noopener noreferrer">issue #43</a> <strong>As hiperligações não são consistentes ao longo do website</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.3</span></div>
+                <div class="issue-content"><blockquote>
+<p>As hiperligações de texto não devem ser diferenciadas apenas com base na cor.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n33">ver requisito 3.3 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<ul>
+<li>As hiperligações devem ter uma representação visual diferente do texto envolvente e garantir consistência desse mesmo visual ao longo das páginas do website entre os diferentes browsers.</li>
+</ul>
+<p>Observou‑se que, em várias partes do website, há hiperligações corretamente identificáveis e que, no estado de hover, apresentam alterações visuais, como mudança de cor com sublinhado. Contudo, este comportamento não é consistente em toda a interface. (Figura 1 e 2)</p>
+<img src="https://github.com/user-attachments/assets/9dece1a9-062d-41c9-9602-bed24eeba376" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Hiperligações não apresentam estilo sublinhado e consistente em todo website por exemplo na página <a href="https://www.etf.gov.pt/entidade-do-tesouro-e-financas">Entidade do Tesouro e Finanças</a></em></p>
+<img src="https://github.com/user-attachments/assets/b03a30d7-f168-4da5-a2b4-f905da0caabf" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 - Sublinhado aplicado corretamente nas hiperligações na página <a href="https://www.etf.gov.pt/recursos-humanos">Recursos Humanos</a></em></p>
+<p>Existem páginas em que as hiperligações não mantêm consistência visual entre elas. É possível observar que diferem: </p>
+<ul>
+<li>As hiperligações têm forma diferente: sublinhado vs sem sublinhado </li>
+<li>As hiperligações não apresentam todas o sublinhado por defeito, sendo necessário passar o rato por cima de algumas, as quais alteram-se apenas a sua cor.</li>
+</ul>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/home">https://www.etf.gov.pt/home</a> (Rodapé em todo website)</li>
+<li><a href="https://www.etf.gov.pt/organica-e-atribuicoes">Orgânica e Atribuições</a></li>
+<li><a href="https://www.etf.gov.pt/entidade-do-tesouro-e-financas">Entidade do Tesouro e Finanças</a></li>
+<li><a href="https://www.etf.gov.pt/utap">UTAP</a></li>
+<li><a href="https://www.etf.gov.pt/sector-empresarial-do-estado">Sector Empresarial do Estado (SEE)</a></li>
+<li><a href="https://www.etf.gov.pt/apoios-financeiros-do-estado">Apoios Financeiros do Estado</a></li>
+<li><a href="https://www.etf.gov.pt/outras-areas-relevantes">Outras Áreas Relevantes</a></li>
+</ul>
+<p> <strong>Recomendações:</strong></p>
+<p>Garantir a consistência da cor, forma e comportamento das hiperligações em todo o website e entre diferentes browsers. Deve assegurar-se que o sublinhado está presente por defeito, por exemplo nas opções do rodapé e não apenas no estado hover (quando o cursor passa sobre a ligação).</p>
+<p>Recomenda-se ainda a revisão e uniformização do estilo de todos os elementos interativos, tornando mais evidente a sua natureza clicável. Para tal, deverá ser adotado um padrão consistente de realce, incluindo sublinhado e alteração de cor no estado hover, aplicável às hiperligações, aos textos do menu e às respetivas subopções, garantindo uma experiência visual coerente e intuitiva em toda a interface.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-4.1">Requisito 4.1 - Os documentos longos têm um índice no topo com hiperligações internas para o mesmo</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/44" class="issue-link" target="_blank" rel="noopener noreferrer">issue #44</a> <strong>Não existem índices no topo de páginas longas</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.1</span><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span></div>
+                <div class="issue-content"><blockquote>
+<p>Os documentos longos têm um índice no topo com hiperligações internas para o mesmo.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n41">ver requisito 4.1 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<ul>
+<li>Para facilitar a navegação em páginas longas, com várias secções de conteúdos, deve existir um índice no topo da página. Esse índice deve conter hiperligações para as várias seções que existem.</li>
+</ul>
+<p>Nas páginas consideradas longas, como no <a href="https://www.etf.gov.pt/estatuto-remuneratorio-dos-membros-dos-orgaos-sociais">Estatuto Remuneratório dos Membros dos Órgãos Sociais</a>  não existe um índice no topo. (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/dfb0567d-ab7f-4380-9803-49c7e7ecafa1" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Páginas longas sem índice no topo</em></p>
+<p>Este recurso permite que todos os utilizadores de tecnologias de apoio ou aqueles que dependem exclusivamente de navegação por teclado consigam localizar rapidamente a informação pretendida sem necessidade de percorrer longas extensões de texto. </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/autorizacoes">Autorizações</a> </li>
+<li><a href="https://www.etf.gov.pt/relatorios-see">Relatórios SEE</a> </li>
+<li><a href="https://www.etf.gov.pt/recursos-humanos">Recursos Humanos</a> </li>
+<li><a href="https://www.etf.gov.pt/esforco-financeiro-publico">Esforço Financeiro Público</a> </li>
+<li><a href="https://www.etf.gov.pt/organica-e-atribuicoes">Atribuições</a> </li>
+<li><a href="https://www.etf.gov.pt/utap-publicacoes">Publicações</a> </li>
+<li><a href="https://www.etf.gov.pt/utap-despachos">Despachos</a> </li>
+<li><a href="https://www.etf.gov.pt/utap-faq">FAQ</a></li>
+</ul>
+<p> <strong>Recomendações:</strong><br>Recomenda-se a inclusão de um índice com hiperligações internas, garantindo que cada item do índice direciona corretamente para a respetiva secção do documento. Esta melhoria facilita a navegação e aumenta a acessibilidade, especialmente para utilizadores que recorrem a tecnologias de apoio.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-4.2">Requisito 4.2 - O layout do sítio Web é adaptável a plataformas móveis sem necessidade de efetuar varrimento horizontal</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/45" class="issue-link" target="_blank" rel="noopener noreferrer">issue #45</a> <strong>Há páginas no website que não se adaptam às diferentes resoluções de ecrãs</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.2</span></div>
+                <div class="issue-content"><blockquote>
+<p>O layout do sítio Web é adaptável a plataformas móveis sem necessidade de efetuar varrimento horizontal.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n42">ver requisito 4.2 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<ul>
+<li>O layout do site deve ter comportamento responsive, ou seja, deve-se adaptar às diferentes resoluções de ecrãs, de forma a garantir que a navegação seja fluída e não haja conteúdo cortado.</li>
+</ul>
+<p>Há elementos no website que não apresentam um comportamento responsivo adequado em diferentes resoluções. Na página “<a href="https://www.etf.gov.pt/capitulo-60-do-orcamento-do-estado">Capítulo 60 do Orçamento do Estado</a>” gráfico, as tabelas e rodapé não se adaptam às diferentes resoluções de ecrãs. (Figura 1 e 2 ) </p>
+<img src="https://github.com/user-attachments/assets/0c9b98eb-7ce9-4f26-96aa-2bff05c4ea7c" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p>Figura 1 – Gráfico “Evolução da despesa” não se adapta a diferentes</p>
+<img src="https://github.com/user-attachments/assets/23f2a1ca-8e56-430f-8917-23c84c3a26c5" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p>Figura 2 – Tabelas e rodapé da página não se adaptam a diferentes resoluções</p>
+<p>Observa‑se o corte de conteúdos das tabelas disponíveis através do acordeão "Anos anteriores" da página <a href="https://www.etf.gov.pt/recuperacao-de-creditos">Recuperação de Créditos</a>, o que obriga ao uso de varrimento horizontal para aceder a conteúdos e realizar interações. Este comportamento não é recomendado do ponto de vista da acessibilidade, pois compromete a navegação e a perceção da informação por parte dos utilizadores. (Figura 3).</p>
+<img src="https://github.com/user-attachments/assets/b0e41916-5863-49d4-a204-7e0431412abe" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p>Figura 3 – Tabelas de conteúdos apresentam conteúdos cortados</p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/capitulo-60-do-orcamento-do-estado">https://www.etf.gov.pt/capitulo-60-do-orcamento-do-estado</a></li>
+<li><a href="https://www.etf.gov.pt/recuperacao-de-creditos">https://www.etf.gov.pt/recuperacao-de-creditos</a></li>
+</ul>
+<p> <strong>Recomendações:</strong><br>Recomendamos garantir que todo o layout o site possui comportamento responsive e adapta-se às diferentes resoluções de ecrã, sem necessidade de fazer varrimento horizontal.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-5.2">Requisito 5.2 - Os elementos interativos têm uma dimensão mínima de 44px CSS (44 pontos) (vertical e horizontal)</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/46" class="issue-link" target="_blank" rel="noopener noreferrer">issue #46</a> <strong>Há elementos interativos com área clicável que não cumprem a dimensão mínima exigida (44px de altura e largura)</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.2</span></div>
+                <div class="issue-content"><blockquote>
+<p>Os elementos interativos têm uma dimensão mínima de 44px CSS (44 pontos), vertical e horizontal.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n52">ver requisito 5.2 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>Para garantir que os utilizadores interajam devidamente com um elemento interativo (botões, imagens-link...), a área clicável desse elemento deve ser, no mínimo, 44px de largura e 44px de altura. </p>
+<p>Na <a href="https://www.etf.gov.pt/home">homepage</a>, existem botões com menos de 44px de altura, não cumprindo as dimensões mínimas necessárias. Por exemplo o botão “<a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">Pesquisar</a>” presente em todas as páginas do website com altura de apenas 24px de área clicável, tamanho inferior ao recomendado. Assim como na página “<a href="https://www.etf.gov.pt/organograma">Organograma</a>” com o botão “Ampliar” com altura de apenas 38px, e a imagem-link do rodapé para aceder ao “Linkedin” possui área clicável 21.01px de largura de 21.11px de altura. (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/c4f8fa7d-ea96-4b1f-9f74-d47144c3380e" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Exemplos de botões que não cumprem as dimensões mínimas</em> </p>
+<p>Sendo assim, não cumprem com as dimensões mínimas necessárias ao toque e o presente requisito.</p>
+<p>Além disso, deixamos uma nota de melhoria para os botões de controlo do carrossel pois apesar de possuírem uma área clicável que cumpre o presente requisito, as setas interativas que são os elementos interativos visíveis possuem apenas 32px de altura e largura. Pelo que recomendamos ampliar proporcionalmente a área mínima de clique recomendada (44px de altura e largura). (Figura 2)</p>
+<img src="https://github.com/user-attachments/assets/2d5f7279-f89c-4004-b48f-8998742c8a43" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 – Setas interativas com área visível de clique com tamanho de apenas 32px</em> </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">https://www.etf.gov.pt/pesquisar#gsc.tab=0</a></li>
+<li><a href="https://www.etf.gov.pt/organograma">https://www.etf.gov.pt/organograma</a></li>
+<li><a href="https://www.etf.gov.pt/home">https://www.etf.gov.pt/home</a></li>
+</ul>
+<p><strong>Recomendações</strong> </p>
+<p>Devem garantir que os elementos interativos de todo o website têm uma altura e largura igual ou superior a 44px de área clicável, mesmo que o ícone ou imagem tenha um tamanho inferior.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-5.4">Requisito 5.4 - Elementos gráficos interativos têm de aparentar ser clicáveis</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/50" class="issue-link" target="_blank" rel="noopener noreferrer">issue #50</a> <strong>Existem elementos interativos que não possuem contraste</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.4</span></div>
+                <div class="issue-content"><blockquote>
+<p>Elementos gráficos interativos têm de aparentar ser clicáveis.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n54">ver requisito 5.4 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<ul>
+<li>O contraste em elementos interativos deve ser de, no mínimo, 3:1 em relação a cor adjacente. Este contraste é aplicado a todos os estados dos elementos (normal, hover, focus, etc). Quando o elemento possui conteúdo em texto, o contraste deve ser de no mínimo, 4,5:1 com a cor de fundo.</li>
+</ul>
+<p>Há elementos interativos na <a href="https://www.etf.gov.pt/home">página inicial</a> que apresentam baixo contraste. Em particular, as setas interativas do carrossel que possuem uma taxa de contraste reduzida em relação ao fundo escuro (1,3:1) tornando‐as pouco percetíveis e dificultando a identificação como elementos clicáveis. (Figura 1) </p>
+<img src="https://github.com/user-attachments/assets/a410958a-403d-4cda-afe8-bf01984189ca" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Setas interativas do carrossel com baixo contraste</em> </p>
+<p>​​Na página <a href="https://www.etf.gov.pt/apoios-a-exportacao-e-ao-investimento">Apoio à exportação e ao Investimento</a>, há problemas de contraste nos acordeões, suas setas interativas com as combinações de cores #0A58CA(cor de primeiro plano) e #164374 (cor de plano de fundo) apresentam uma taxa de contraste (1,6:1) inferior ao recomendado. Sendo assim, a visibilidade do elemento é interativo pode ser interrompida para utilizadores com baixa visão por exemplo. (Figura 2)  </p>
+<img src="https://github.com/user-attachments/assets/43433fc3-1a61-485b-a0e0-ece675dda43d" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 – Elementos interativos dos acordeões com baixo contraste</em> </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/home">https://www.etf.gov.pt/home</a></li>
+<li><a href="https://www.etf.gov.pt/apoios-a-exportacao-e-ao-investimento">https://www.etf.gov.pt/apoios-a-exportacao-e-ao-investimento</a></li>
+<li><a href="https://www.etf.gov.pt/recuperacao-de-creditos">https://www.etf.gov.pt/recuperacao-de-creditos</a></li>
+</ul>
+<p> <strong>Recomendações:</strong></p>
+<p>Recomendamos a revisão das cores dos vários estados dos elementos para garantir os valores mínimos de contraste em elementos interativos.</p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/49" class="issue-link" target="_blank" rel="noopener noreferrer">issue #49</a> <strong>Carrossel com imagem que aparenta ser clicável mas não possui link atribuído</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.4</span></div>
+                <div class="issue-content"><blockquote>
+<p>Elementos gráficos interativos têm de aparentar ser clicáveis.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-conteudo#n54">ver requisito 5.4 na lista Conteúdo</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>A <a href="https://www.etf.gov.pt/home">página inicial</a> possui um carrossel de imagens-link, com redirecionamento a hiperligações internas do website. No entanto, a segunda imagem do carrossel "Reestruturação da DGTF" visualmente configura-se como uma imagem-link, mas não possui uma hiperligação ativa (Figura 1). </p>
+<img src="https://github.com/user-attachments/assets/b4fb8392-b0ea-4ed5-bcfd-dc4ceac8798a" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Imagem aparenta ser clicável, mas não possui hiperligação</em> </p>
+<p>Esta inconsistência cria uma expectativa enganosa para o utilizador, que é induzido a clicar no botão “Entidade Tesouro e Finanças (ETF)” sem obter qualquer resposta, comportamento distinto das outras opções do carrossel que possuem o texto “Ver mais” com um estilo clicável.  </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/home">https://www.etf.gov.pt/home</a> (Imagem do Carrossel aparenta ser clicável mas não é)</li>
+</ul>
+<p> <strong>Recomendações:</strong><br>Recomenda-se verificar o propósito da imagem e definir a ação pretendida. Caso a imagem não deva funcionar como um link, recomenda‑se remover o estilo e comportamento clicável, garantindo coerência com as restantes interações do carrossel. Se o objetivo for permitir navegação, deve ser adicionada a hiperligação correspondente. </p>
+</div>
+              </li></ul>
+</div>
+
+      </div>
+      <div class="checklist-section">
+        <h3 id="checklist-transacao">Checklist Transação</h3>
+        <p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+        
+      <p><strong>Nível de conformidade:</strong></p>
+        <ul>
+          <li><strong>Checklist Transação</strong>: 60.0% (3/5)
+            <ul>
+              <li>Requisitos avaliados: 13 (8 N/A excluídos, 5 aplicáveis)</li>
+              <li>Requisitos OK: 3</li>
+              <li>Requisitos NOK: 2</li>
+              <li>Requisitos N/A: 8</li>
+            </ul>
+          </li>
+        </ul>
+    
+        <h4 class="requirement-title" id="req-transacao-r-1.1">Requisito 1.1 - A sequência de tabulação entre campos segue a sequência de preenchimento</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/51" class="issue-link" target="_blank" rel="noopener noreferrer">issue #51</a> <strong>Existem campos do formulário que são ignorados quando se navega com o teclado/leitor de ecrã</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.1</span></div>
+                <div class="issue-content"><blockquote>
+<p>A sequência de tabulação entre campos segue a sequência de preenchimento.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-transacao#n11">ver requisito 1.1 na lista Transação</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<ul>
+<li>Ao navegar pelo formulário com o teclado usando a tecla TAB, a sequência de tabulação deve seguir a ordem de preenchimento, passando por todos os campos disponíveis.</li>
+</ul>
+<p>A pesquisa livre pressupõe uma ordem de preenchimento dos campos, ao preencher o campo de edição é necessário acionar um botão de confirmação para realizar a pesquisa. Durante os testes e revisão do website identificámos que foi removido o botão "Pesquisar". Que apresentava-se anteriormente após o campo de preenchimento e apresentava falhas em diferentes dispositivos. (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/c7f8094b-ac68-4e86-88eb-2a54a0aff2c1" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1– Botão “pesquisar” que não está mais disponível no website</em> </p>
+<p>Atualmente, na página <a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">Pesquisa</a>, é apresentada com apenas o campo de introdução de texto com <code>&lt;input&gt;</code> para preenchimento da pesquisa, a submissão da pesquisa só é possível através da tecla ENTER ou mediante o clique com o rato no ícone da lupa localizado à esquerda da caixa de edição e que não recebe foco com tecnologias assistivas. Não existindo um botão “Pesquisar” acessível na sequência de navegação por teclado, esta limitação impede que utilizadores que recorrem a teclado ou tecnologias de apoio completem a tarefa de forma previsível, comprometendo a sequência lógica de tabulação do presente requisito.  (Figura 2)</p>
+<img src="https://github.com/user-attachments/assets/24270d03-7f89-4a89-81a4-f3cb3529eddb" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 – O campo de pesquisa não apresenta uma sequência lógica de preenchimento</em> </p>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">https://www.etf.gov.pt/pesquisar#gsc.tab=0</a></li>
+</ul>
+<p> <strong>Recomendações:</strong><br>Deve ser disponibilizado um botão “Pesquisar” visível e acessível, corretamente integrado na ordem de tabulação após o campo de texto, garantindo que a sequência de navegação segue o fluxo lógico de preenchimento e submissão da pesquisa.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-1.2">Requisito 1.2 - Os formulários com mais de 2 ecrãs de altura devem ser distribuídos por várias páginas</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/52" class="issue-link" target="_blank" rel="noopener noreferrer">issue #52</a> <strong>Inexistência de formulários com mais de 2 ecrãs de altura</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.2</span></div>
+                <div class="issue-content"><blockquote>
+<p>Os formulários com mais de 2 ecrãs de altura devem ser distribuídos por várias páginas.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-transacao#n12">ver requisito 1.2 na lista Transação</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>Não existem formulários com mais de 2 ecrãs de altura, pelo que o requisito não se aplica. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-1.3">Requisito 1.3 - Os formulários com mais de uma página têm a sequência de passos ilustrada</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/53" class="issue-link" target="_blank" rel="noopener noreferrer">issue #53</a> <strong>Inexistência de formulários com mais de uma página</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.3</span></div>
+                <div class="issue-content"><blockquote>
+<p>Os formulários com mais de uma página têm a sequência de passos ilustrada.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-transacao#n13">ver requisito 1.3 na lista Transação</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>Não existem formulários com mais de uma página, pelo que o requisito não se aplica. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-2.2">Requisito 2.2 - É usada revelação progressiva em vez de campos inativos</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/55" class="issue-link" target="_blank" rel="noopener noreferrer">issue #55</a> <strong>Inexistência de formulários longos com campos dependentes</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.2</span></div>
+                <div class="issue-content"><blockquote>
+<p>É usada revelação progressiva em vez de campos inativos.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-transacao#n22">ver requisito 2.2 na lista Transação</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<p>Os formulários presentes no site não necessitam de revelação progressiva. Sendo assim, não possuem campos dependentes de campos-chave, pelo que o requisito não se aplica. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-2.3">Requisito 2.3 - As legendas dos campos são breves e claras</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/56" class="issue-link" target="_blank" rel="noopener noreferrer">issue #56</a> <strong>A legenda do formulário de pesquisa não está associada ao campo</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.3</span></div>
+                <div class="issue-content"><blockquote>
+<p>As legendas dos campos são breves e claras.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-transacao#n23">ver requisito 2.3 na lista Transação</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<ul>
+<li>Todos os campos devem ter uma legenda breve e clara associada, que descreva quais os tipos de dados que devem ser inseridos nesse mesmo campo.</li>
+</ul>
+<p>No formulário da página <a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">Pesquisa</a>, é possível observar que o campo de introdução do texto, apesar de apresentar a legenda visível "Insira o texto a pesquisar:", esta não está programaticamente associada ao respetivo campo de introdução de dados, uma vez que não existe correspondência entre os atributos for no <code>&lt;label&gt;</code> e id<code> no &lt;input&gt;</code>. (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/755bc6a2-11b4-46e9-aba2-606681f53028" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Legenda não está associada ao campo de pesquisa</em> </p>
+<p>Esta falha compromete a acessibilidade, dificultando a correta interpretação do campo por tecnologias de apoio, como leitores de ecrã, e não assegura o cumprimento do presente requisito.</p>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">https://www.etf.gov.pt/pesquisar#gsc.tab=0</a></li>
+</ul>
+<p><strong>Recomendação</strong><br>Recomenda-se a criação de uma associação explícita entre a legenda e o campo de input, através da definição de um atributo id único no campo de formulário e da utilização desse mesmo valor no atributo for da respetiva label. </p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-2.4">Requisito 2.4 - Campos obrigatórios devem ser claramente indicados como tal</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/57" class="issue-link" target="_blank" rel="noopener noreferrer">issue #57</a> <strong> Inexistência de formulários com campos de preenchimento obrigatório</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.4</span></div>
+                <div class="issue-content"><blockquote>
+<p>Campos obrigatórios devem ser claramente indicados como tal.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-transacao#n24">ver requisito 2.4 na lista Transação</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>Não encontrámos formulários com campos de preenchimento obrigatório, pelo que o requisito não se aplica. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-3.1">Requisito 3.1 - Em ações longas, o sistema deve indicar o que está a acontecer</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/58" class="issue-link" target="_blank" rel="noopener noreferrer">issue #58</a> <strong>Inexistência de formulários que necessitem de ações longas</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.1</span></div>
+                <div class="issue-content"><blockquote>
+<p>Em ações longas, o sistema deve indicar o que está a acontecer.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-transacao#n31">ver requisito 3.1 na lista Transação</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>Não existem formulários que necessitem de ações longas, pelo que o requisito não se aplica. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-3.2">Requisito 3.2 - Deve ser confirmado o sucesso da transação/envio de informação</h4>
+<div class="requirement-content">
+<p><span class="status-ok"><span class="sr-only">etiqueta: </span>OK</span> (no entanto contém 1 melhoria que se recomenda efetuar)</p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/59" class="issue-link" target="_blank" rel="noopener noreferrer">issue #59</a> <strong>Não é informado aos leitores de ecrã sobre o sucesso/erro do envio de informações automaticamente</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.2</span></div>
+                <div class="issue-content"><blockquote>
+<p>Deve ser confirmado o sucesso da transação/envio de informação.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-transacao#n32">ver requisito 3.2 na lista Transação</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>Idealmente as mensagens de status devem ser informadas automaticamente para as tecnologias de apoio assim que tiver mudanças na página. As mensagens podem ser determinadas programaticamente de modo que possam ser apresentadas para o utilizador.</p>
+<p>Na página <a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">Pesquisar</a>, a transação é confirmada, mas não é informado aos leitores de ecrã sobre o sucesso/erro do envio de informações automaticamente. (Figura 1).</p>
+<img src="https://github.com/user-attachments/assets/459ff44e-436e-4c95-a035-01ac61e2d099" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - O resultado da pesquisa não recebe foco com leitor de ecrã sendo assim a mensagem de confirmação e o resultado da pesquisa pode não ser percetível.</em> </p>
+<p>É possível observar visualmente que ao realizar a pesquisa sobre "lesgilação" ao confirmar a realização da pesquisa com ENTER, visualmente é exibida uma caixa de resultados com "Aproximadamente 299 resultados (0.14 segundos)". No entanto, o leitor de ecrã não anuncia esta mensagem de confirmação, após submeter a pesquisa, ou seja, o foco não é direcionado para o leitor de ecrã anunciar a mensagem. O mesmo acontece em outras situações (Figura 02)</p>
+<img src="https://github.com/user-attachments/assets/0b941eff-8028-48a5-a3ba-a310e1cabfb7" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 - A mensagem "A pesquisa não encontrou resultados." não recebe foco automaticamente com leitor de ecrã</em> </p>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">https://www.etf.gov.pt/pesquisar#gsc.tab=0</a></li>
+</ul>
+<p> <strong>Recomendações:</strong><br>Recomendamos que, após a submissão do texto da pesquisa, seja comunicada a mensagem de confirmação também pelo leitor de ecrã. </p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-4.2">Requisito 4.2 - As ações destrutivas nunca devem ser permanentes; deve ser sempre possível desfazer a operação</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/61" class="issue-link" target="_blank" rel="noopener noreferrer">issue #61</a> <strong>Inexistência de formulários com ações destrutivas</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.2</span></div>
+                <div class="issue-content"><blockquote>
+<p>As ações destrutivas nunca devem ser permanentes, deve ser sempre possível desfazer a operação.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-transacao#n42">ver requisito 4.2 na lista Transação</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>Não existem formulários com ações destrutivas, pelo que o requisito não se aplica. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-4.3">Requisito 4.3 - As mensagens de erro são claramente identificadas junto aos campos de origem</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/62" class="issue-link" target="_blank" rel="noopener noreferrer">issue #62</a> <strong>Inexistência de formulários que necessitem de mensagens de erro</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.3</span></div>
+                <div class="issue-content"><blockquote>
+<p>As mensagens de erro são claramente identificadas junto aos campos de origem.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-transacao#n43">ver requisito 4.3 na lista Transação</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>O único formulário disponível é de pesquisa livre, sendo assim não necessitam de mensagens de erro associadas aos campos, pelo que o requisito não se aplica. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-4.4">Requisito 4.4 - As mensagens de erro devem mostrar os passos concretos para a resolução dos mesmos</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/63" class="issue-link" target="_blank" rel="noopener noreferrer">issue #63</a> <strong>Inexistência de formulários que necessitem de mensagens de erro</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.4</span></div>
+                <div class="issue-content"><blockquote>
+<p>As mensagens de erro devem mostrar os passos concretos para a resolução dos mesmos.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-transacao#n44">ver requisito 4.4 na lista Transação</a></p>
+</blockquote>
+<p><strong>Evidências:</strong><br>Não encontrámos formulários que necessitem de mensagens de erro, pelo que o requisito não se aplica. (N/A)</p>
+</div>
+              </li></ul>
+</div>
+
+      </div>
+      <div class="checklist-section">
+        <h3 id="outras-violacoes">Outras violações</h3>
+        <div class="requirement-content">
+<p><span class="status-ok"><span class="sr-only">etiqueta: </span>OK</span> (no entanto contém 5 melhorias que se recomenda efetuar)</p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/68" class="issue-link" target="_blank" rel="noopener noreferrer">issue #68</a> <strong>Outras violações - O texto das hiperligações não esclarece qual o seu destino</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span></div>
+                <div class="issue-content"><p><strong>Evidências:</strong><br>As hiperligações devem ter um texto que indique qual a página para a qual encaminham. É comum existirem hiperligações cujo texto é apenas, por exemplo, “Clique aqui” ou “Saiba mais”. Esta construção não está correta porque utilizadores de leitor de ecrã que façam uma recolha das hiperligações da página vão ficar com uma listagem de links “Clique aqui”, sem qualquer contexto e sem conseguir navegar através deles.</p>
+<p>Verificou-se que existem várias hiperligações com o mesmo texto e destinos diferentes, como é o caso da página <a href="https://www.etf.gov.pt/recursos-humanos">Recursos Humanos</a>. Existem 3 links nomeados “Lista nominativa” que redirecionam para sítios diferentes. Para utilizadores de leitor de ecrã, não há diferença entre as duas ligações (Figura 1). </p>
+<img src="https://github.com/user-attachments/assets/b25639e0-24d1-4dd4-b688-96ef8027c48c" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - As hiperligações têm o mesmo nome, mas destinos diferentes</em> </p>
+<p>Adicionalmente, os links não têm indicação de que irão abrir num novo separador, algo que se estende à maioria dos PDFs no site. Por exemplo, na página <a href="https://www.etf.gov.pt/o-que-e-o-sector-empresarial-do-estado-see">O que é o SEE?</a> as hiperligações abrem num novo separador ou janela sem aviso. Se o fizer, pode ser desorientador, especialmente para as pessoas que têm dificuldade em percecionar conteúdos visuais. É necessário indicar que a hiperligação abre numa nova janela no seu texto alternativo. (Figura 2) </p>
+<img src="https://github.com/user-attachments/assets/7c1f0251-c500-4d9c-b2f9-d664454ba718" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 - As hiperligações direcionam para janelas externas sem aviso</em> </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/recursos-humanos">https://www.etf.gov.pt/recursos-humanos</a></li>
+<li><a href="https://www.etf.gov.pt/o-que-e-o-sector-empresarial-do-estado-see">https://www.etf.gov.pt/o-que-e-o-sector-empresarial-do-estado-see</a></li>
+</ul>
+<p> <strong>Recomendações:</strong></p>
+<p>Recomendamos que os textos das hiperligações sejam alterados, para se tornarem mais claros sobre a página para onde encaminham, nomeadamente:  </p>
+<ul>
+<li>Incluir mais texto envolvente no <code>&lt;a&gt;</code> , de modo a contextualizar e distinguir hiperligações com nomes semelhantes. No caso das listas nominativas, uma possível solução seria “<a href="https://www.etf.gov.pt/media/doc/DGTF-Lista-nominativa-transicao-DL-88-2023-assinada.pdf">lista nominativa de transição para as carreiras</a>”.  </li>
+<li>Adicionar um atributo “title” ao <code>&lt;a&gt;</code>, com a indicação “Abre num novo separador”</li>
+</ul>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/67" class="issue-link" target="_blank" rel="noopener noreferrer">issue #67</a> <strong>Outras violações- Uso inadequado do atributo title no elemento &lt;body&gt;</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span></div>
+                <div class="issue-content"><p><strong>Evidências:</strong><br>Ao navegar no <a href="https://www.etf.gov.pt/home">website</a>, é exibida constantemente uma tooltip junto ao cursor do rato com o texto “Corpo da página”, visível em qualquer área da interface. Este comportamento resulta da presença indevida do atributo <code>title="Corpo da página"</code> aplicado diretamente ao elemento  no HTML de todo website. (Figura 1 e 2) </p>
+<img src="https://github.com/user-attachments/assets/26913fdb-9f26-420e-86fb-0ada2961b76c" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Atributo <code>&lt;title&gt;</code> mal aplicado exibe texto “Corpo da página” em todo o website</em> </p>
+<img src="https://github.com/user-attachments/assets/b0e74720-bd5a-4711-99ac-cd9905c2f0b6" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 – Tooltip “Corpo da página” em páginas interiores como <a href="https://www.etf.gov.pt/utap-missao-e-atribuicoes">Missão e Atribuições</a></em> </p>
+<p>A exibição permanente desta tooltip prejudica a experiência de utilização, podendo tornar-se intrusiva e causar distração, especialmente para pessoas com limitações cognitivas ou dificuldades de atenção. Além disso, o uso inadequado do atributo title não contribui para a acessibilidade. </p>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/home">https://www.etf.gov.pt/home</a> (todo website)</li>
+</ul>
+<p><strong>Recomendação</strong> </p>
+<p>Remover o atributo <code>&lt;title&gt;</code> do elemento <code>&lt;body&gt;</code> para eliminar a tooltip e melhorar a usabilidade da página. </p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/66" class="issue-link" target="_blank" rel="noopener noreferrer">issue #66</a> <strong>Outras violações - Existem tabelas em PDFs que não estão acessíveis</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span></div>
+                <div class="issue-content"><blockquote>
+<p>Em ações longas, o sistema deve indicar o que está a acontecer.<br>– <a href="https://amagovpt.github.io/kit-selo/checklists/checklist-transacao#n31">ver requisito 3.1 na lista Transação</a></p>
+</blockquote>
+<p><strong>Evidências:</strong></p>
+<ul>
+<li>Todos os componentes devem ser semanticamente estruturados utilizando elementos nativos do HTML que representam o tipo de conteúdo de forma apropriada. Esta prática assegura que os utilizadores de leitores de ecrã consigam aceder às informações de forma eficaz e sem impedimentos.</li>
+</ul>
+<p>Verificou-se que existem tabelas inseridas em PDFs que não estão acessíveis para tecnologias de apoio. Por exemplo, na página<a href="https://www.etf.gov.pt/recursos-humanos"> Recursos Humanos</a>, que apresenta hiperligações que redirecionam com tabelas de dados em PDF. (Figura 01)</p>
+<img src="https://github.com/user-attachments/assets/a263c7aa-62f2-4ecc-9ce9-d6fa1aaf46f0" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Tabelas em PDF não são acessíveis e são anunciadas com informações desestruturadas</em></p>
+<p>Mesmo sendo possível extrair esses dados em TXT destes PDFs, as informações de tabelas não são extraídas na ordem correta, pelo que não é possível interpretar o conteúdo que transmitem ao navegar com o leitor de ecrã. </p>
+<p>O mesmo acontece na página “<a href="https://www.etf.gov.pt/relatorios-see">Relatórios SEE</a>”, que disponibiliza relatórios de “Situação económico‑financeira” em formato PDF, contendo tabelas que não são acessíveis para utilizadores de leitores de ecrã. </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/media/doc/publicitacao-resultados-arquivo.pdf">https://www.etf.gov.pt/media/doc/publicitacao-resultados-arquivo.pdf</a></li>
+<li><a href="https://www.etf.gov.pt/media/doc/situacao-economico-financeira-2025-2024-empresas-mai-1.pdf">https://www.etf.gov.pt/media/doc/situacao-economico-financeira-2025-2024-empresas-mai-1.pdf</a></li>
+<li><a href="https://www.etf.gov.pt/media/doc/situacao-economico-financeira-2025-2024-mai-1.pdf">https://www.etf.gov.pt/media/doc/situacao-economico-financeira-2025-2024-mai-1.pdf</a></li>
+</ul>
+<p><strong>Recomendações</strong><br>Recomenda‑se que essas tabelas sejam convertidas para páginas HTML com estrutura semântica adequada, permitindo navegação, leitura e interpretação correta dos dados na navegação por tecnologias de apoio como leitores de ecrã. </p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/65" class="issue-link" target="_blank" rel="noopener noreferrer">issue #65</a> <strong>Outras violações - Botões com texto alternativo incorreto</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span></div>
+                <div class="issue-content"><p><strong>Evidências:</strong></p>
+<p>No carrossel da <a href="https://www.etf.gov.pt/home">página inicial</a>, os botões das setas interativas não possuem texto alternativo sendo assim o leitor de ecrã NVDA anuncia apenas como "Botão", para que sejam percetíveis como controlos das imagens-link necessitam de um texto alternativo atribuído. Atualmente, é lido corretamente pelas tecnologias de apoio, tornando-os incompreensíveis para o utilizador. (Figura 1) </p>
+<img src="https://github.com/user-attachments/assets/5e7dae43-05ac-4cd1-9413-1c66b2dd47ea" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1- Botões interativos do carrossel de imagens não possuem nome acessível anunciados apenas como "botão"</em>  </p>
+<p>Verifica-se que os elementos interativos da página <a href="https://www.etf.gov.pt/informacao-sobre-as-empresas">Informações sobre empresas</a> com a barra de paginação apresenta atributos aria-label, no entanto o texto alternativo dos botões está em inglês “Next” e “Previous” na versão portuguesa do website. Como resultado, os leitores de ecrã anunciam “First”, “Previous”, “Next” e “Last”, o que compromete a consistência linguística do website e a experiência de utilizadores que dependem destas tecnologias de apoio. (Figura 2) </p>
+<img src="https://github.com/user-attachments/assets/d5472dca-436c-463a-8907-a35210e4745c" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura2 - Textos alternativos dos botões da barra de paginação estão em inglês.</em> </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/informacao-sobre-as-empresas">https://www.etf.gov.pt/informacao-sobre-as-empresas</a></li>
+<li><a href="https://www.etf.gov.pt/home">https://www.etf.gov.pt/home</a></li>
+</ul>
+<p><strong>Recomendações</strong><br>Recomendamos rever o texto alternativo dos botões do carrossel para que correspondam sua funcionalidade no website em questão.  </p>
+<p>Recomendação </p>
+<p>Remover o atributo title do elemento  para eliminar a tooltip e melhorar a usabilidade da página.<br> <strong>Recomendações:</strong></p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_072/issues/64" class="issue-link" target="_blank" rel="noopener noreferrer">issue #64</a> <strong>Outras violações - Existem ferramentas fornecidas por terceiros no website com problemas de acessibilidade</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span></div>
+                <div class="issue-content"><p><strong>Evidências:</strong></p>
+<p>Na página <a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">Pesquisar</a> disponibiliza incorporação de ferramenta externa, As ferramentas presentes no site devem, preferencialmente, ser nativas. A vantagem é um maior nível de personalização na sua construção, o que torna mais fácil garantir que serão acessíveis a todos os utilizadores. Deve-se evitar usar tecnologia fornecida por terceiros porque não é possível editar o seu código, correndo o risco de herdar problemas de acessibilidade, sem ser possível proceder à sua correção. </p>
+<p>Verificámos que, ao submeter uma pesquisa, o utilizador é redirecionado para uma página de resultados fornecida pela <a href="https://programmablesearchengine.google.com/about/">Programmable Search Engine</a>, uma ferramenta da Google. Esta ferramenta tem alguns problemas de acessibilidade, por exemplo problemas de contrastes em textos e imagens em miniatura, sem texto alternativo (Figura 1 e 2). </p>
+<img src="https://github.com/user-attachments/assets/03f45c78-7d7a-4483-93c6-9abaa7b3dd77" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1- O A ferramenta externa para pesquisa apresenta erros de contraste</em> </p>
+<img src="https://github.com/user-attachments/assets/1b7955b1-f06e-4f4d-8fba-8144b49d749b" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 - Elementos interativos da paginação com área de clique inferior ao recomendado (44px)</em> </p>
+<p>Para além disso, não é dada nenhuma indicação ao utilizador de que irá abrir um novo separador, o que adiciona complexidade à tarefa. </p>
+<p><strong>URLs a verificar</strong></p>
+<ul>
+<li><a href="https://www.etf.gov.pt/pesquisar#gsc.tab=0">https://www.etf.gov.pt/pesquisar#gsc.tab=0</a></li>
+</ul>
+<p> <strong>Recomendações:</strong></p>
+<p>Recomendamos construir os resultados da pesquisa na própria página, garantindo que cumpre com os critérios de acessibilidade mencionados neste relatório. </p>
+</div>
+              </li></ul>
+</div>
+
+      </div></section>
+
+    <section id="etiquetas" class="mb-5 report-section">
+      <h2>Significado das etiquetas utilizadas</h2>
+      <ul>
+        <li><span class="label-tag label-ok"><span class="sr-only">etiqueta: </span>OK</span> - status OK</li>
+        <li><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span> - status OK, mas pode melhorar</li>
+        <li><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span> - status Not OK</li>
+        <li><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span> - status Não Aplicável</li>
+        <li><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk10 web</span> - checklist 10 Aspetos críticos de acessibilidade funcional</li>
+        <li><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span> - checklist Conteúdo</li>
+        <li><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span> - checklist Transação</li>
+        <li><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span> - permite construir o subcapítulo "Outras violações", o qual integra o capítulo "Avaliações manuais"</li>
+        <li><span class="label-tag label-declaracao"><span class="sr-only">etiqueta: </span>dec a11y</span> - permite construir o capítulo "Declaração de acessibilidade e usabilidade"</li>
+        <li><span class="label-tag label-auto"><span class="sr-only">etiqueta: </span>av auto</span> - permite construir o capítulo "Avaliação automática"</li>
+        <li><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>testes usabilidade</span> - permite construir o capítulo "Testes de usabilidade"</li>
+      </ul>
+    </section>
+
+  </div>
+  <footer class="report-footer">
+    <p>© 2026 ARTE - Agência para a Reforma Tecnológica do Estado, I.P. Todos os Direitos Reservados.</p>
+    <p><em lang="en">GitReports v1.0</em> - relatório gerado automaticamente a partir dos <em lang="en">issues</em> do GitHub</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
